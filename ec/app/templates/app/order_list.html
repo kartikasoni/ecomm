@@ -1,0 +1,27 @@
+{% extends "app/base.html" %}
+{% block title %}Your Orders · My Shop{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">Order History</h2>
+
+{% if orders %}
+  <div class="list-group">
+    {% for o in orders %}
+      <a class="list-group-item list-group-item-action" href="{% url 'order_detail' o.order_id %}">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mb-1">Order #{{ o.order_id }}</h6>
+          <small class="text-muted">{{ o.created_at|date:"M d, Y H:i" }}</small>
+        </div>
+        <p class="mb-1">
+          Amount: ₹ {{ o.total_amount }} |
+          Payment: {{ o.payment_status|title }} |
+          Status: {{ o.order_status|title }}
+        </p>
+      </a>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-info">You haven’t placed any orders yet.</div>
+  <a class="btn btn-primary" href="{% url 'product_list' %}">Start shopping</a>
+{% endif %}
+{% endblock %}

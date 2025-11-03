@@ -1,0 +1,22 @@
+{% extends "app/base.html" %}
+{% block title %}Login · My Shop{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">Login</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input type="text" name="username" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" required>
+  </div>
+
+  <button class="btn btn-primary">Login</button>
+  <a class="btn btn-link" href="{% url 'register' %}">Create an account</a>
+</form>
+{% endblock %}

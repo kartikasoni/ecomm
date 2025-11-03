@@ -1,0 +1,116 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}{{ category }}{% endblock title %}
+
+{% block main-content %}
+<div class="container my-5">
+
+    <h1 class="fw-bold mb-4" style="color:#2d8659;">{{ category }}</h1>
+
+    {% for p in products %}
+    <div class="card shadow mb-4" style="max-width: 32rem; border-radius:6px;">
+        <!-- product image -->
+        {% if p.image_url %}
+            <div style="position:relative;">
+                <img src="{{ p.image_url.url }}"
+                     class="card-img-top"
+                     alt="{{ p.name }}"
+                     style="object-fit:cover; max-height:260px; width:100%; border-top-left-radius:6px; border-top-right-radius:6px;">
+                <span style="
+                    position:absolute;
+                    top:12px;
+                    right:12px;
+                    background:#2d8659;
+                    color:#fff;
+                    font-weight:600;
+                    font-size:14px;
+                    padding:6px 10px;
+                    border-radius:4px;">
+                    {{ p.category }}
+                </span>
+            </div>
+        {% endif %}
+
+        <div class="card-body" style="color:#2d8659;">
+            <!-- product name -->
+            <h3 class="card-title fw-bold">{{ p.name }}</h3>
+
+            <!-- description / short text -->
+            <p class="text-muted">
+                {{ p.description|default:"na" }}
+            </p>
+
+            <!-- price -->
+            <h2 class="fw-bold mb-3">₹{{ p.price }}</h2>
+
+            <!-- stock -->
+            {% if p.stock > 0 %}
+                <p class="text-success fw-semibold">
+                    <i class="bi bi-check-square"></i> In Stock ({{ p.stock }})
+                </p>
+            {% else %}
+                <p class="text-danger fw-semibold">
+                    <i class="bi bi-x-square"></i> Out of Stock
+                </p>
+            {% endif %}
+
+            <!-- action buttons -->
+            <div class="d-grid gap-2">
+
+                <!-- View Details button -->
+                <a href="{% url 'product_detail' p.product_id %}"
+                   class="btn"
+                   style="background:#2d8659; color:#fff; font-weight:600;">
+                    <i class="bi bi-box"></i> View Details
+                </a>
+
+                <!-- Add to Cart form -->
+                {% if p.stock > 0 %}
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'add_to_cart' p.product_id %}" method="post" class="d-grid">
+                            {% csrf_token %}
+                            <!-- default quantity 1 -->
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit"
+                                    class="btn"
+                                    style="background:#2d8659; color:#fff; font-weight:600;">
+                                <i class="bi bi-bag-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'user_login' %}"
+                           class="btn"
+                           style="background:#2d8659; color:#fff; font-weight:600;">
+                            Login to Add to Cart
+                        </a>
+                    {% endif %}
+                {% else %}
+                    <button class="btn btn-secondary" disabled>
+                        Out of Stock
+                    </button>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <p class="text-muted">No products in this category.</p>
+    {% endfor %}
+
+    <div class="mt-4">
+        <a href="{% url 'product_list' %}"
+           class="btn"
+           style="background:#2d8659; color:#fff; font-weight:600;">
+            <i class="bi bi-arrow-left-square"></i> Back to All Products
+        </a>
+    </div>
+
+</div>
+{% endblock main-content %}
+
+
+
+
+
+

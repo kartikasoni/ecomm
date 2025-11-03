@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="{%static 'app/css/owl.carousel.min.css'%}" />
+    <link rel="stylesheet" href="{%static 'app/css/all.min.css'%}" />
+    <link rel="stylesheet" href="{%static 'app/css/style.css'%}" />
+    <title>Herbal products | {%block title%}{% endblock title %}</title>
+</head>
+
+
+     <nav class="navbar navbar-expand-lg navbar-custom" style="background-color: green;">
+      
+     <div class="container-fluid">
+            <!-- Brand/Logo -->
+            {% comment %} <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Need Logo" style="height: 50px;">
+            </a> {% endcomment %}
+            
+            <!-- Toggler for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarContent" aria-controls="navbarContent" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Left Side Navigation -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'home' %}">Home</a>
+                    </li>
+
+            <!-- Product Categories -->        
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'product_list' %}">All Products</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'category_products' 'Brown Sugar' %}">Brown Sugar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category_products' 'Lemon Grass' %}">Lemon Grass</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category_products' 'Herbal Toothpaste' %}">Herbal Toothpaste</a></li>
+                             <li><a class="dropdown-item" href="{% url 'category_products' 'Herbal Salt' %}">Herbal Salt</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category_products' 'Brown Rice' %}">Brown Rice</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category_products' 'Acne Soap' %}">Acne Soap</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category_products' 'Oil' %}">Oil</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category_products' 'Butter' %}">Butter</a></li>
+                            <li><a class="dropdown-item" href="{% url 'category_products' 'Moringa Powder' %}">Moringa Powder</a></li> 
+                        </ul>
+
+
+                        {% comment %} <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Brown Sugar</a></li>
+                            <li><a class="dropdown-item" href="#">Lemon Grass</a></li>
+                            
+                            <li><a class="dropdown-item" href="#">Herbal Toothpaste</a></li>
+                            <li><a class="dropdown-item" href="#">Herbal salt</a></li>
+                            <li><a class="dropdown-item" href="#">Brown Rice</a></li>
+                            <li><a class="dropdown-item" href="#">Acne Soap</a></li>
+                            <li><a class="dropdown-item" href="#">Oil</a></li>
+                            <li><a class="dropdown-item" href="#">Butter</a></li>
+                            <li><a class="dropdown-item" href="#">Moringa Powder</a></li>
+                        </ul>
+
+
+                    </li> {% endcomment %}
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+
+
+
+      <!-- Search Form -->
+      <form class="d-flex me-3" role="search">
+        <input class="form-control search-box" type="search" 
+               placeholder="Search" aria-label="Search">
+    </form>
+    
+    <!-- Right Side - User Profile -->
+    <ul class="navbar-nav mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" 
+               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ user.username }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="{% url 'order_list' %}">My Orders</a></li>
+                <li><a class="dropdown-item" href="{% url 'user_logout' %}">Logout</a></li>
+            </ul>
+        </li>
+    
+        <li class="nav-item mx-2">
+            <a href="{% url 'cart_view' %}" class="nav-link text-white">Cart</a>
+        </li>
+    
+        <li class="nav-item mx-2">
+            <a href="{% url 'wishlist_view' %}" class="nav-link text-white">Wishlist</a>
+        </li>
+    {% else %}
+        <li class="nav-item mx-2">
+            <a href="{% url 'user_login' %}" class="nav-link text-white">Login</a>
+        </li>
+        <li class="nav-item mx-2">
+            <a href="{% url 'register' %}" class="nav-link text-white">Register</a>
+        </li>
+    {% endif %}
+    
+        
+    </ul>
+</div>
+</div>
+</nav>  
+
+
+{% block banner-slider %}{% endblock banner-slider %}
+{% block information%}{% endblock information%}
+{% block main-content %}{% endblock main-content %}
+
+
+   
+
+   <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+   integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+   crossorigin="anonymous"></script>
+
+   <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+    crossorigin="anonymous"></script> 
+
+<!-- jQuery -->
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+    </script>
+
+<!-- Custom JS -->
+    <script script="{%static 'app/js/owl.carousel.min.js'%}"></script>
+    <script script="{%static 'app/js/all.min.js'%}"></script>
+    <script script="{%static 'app/js/myscript.js'%}"></script>
+</body>
+</html>    

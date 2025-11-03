@@ -1,0 +1,91 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Checkout{% endblock title %}
+
+{% block main-content %}
+<div class="container my-4">
+    <h2 class="mb-3">Checkout</h2>
+
+    {% if cart_items %}
+    <div class="row">
+        <!-- Address / payment form -->
+        <div class="col-lg-7">
+            <form method="post" action="{% url 'place_order' %}">
+                {% csrf_token %}
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" name="full_name" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" value="{{ user.email }}" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" name="phone" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Address</label>
+                        <textarea class="form-control" name="address" rows="2" required></textarea>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">City</label>
+                        <input type="text" class="form-control" name="city" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">State</label>
+                        <input type="text" class="form-control" name="state" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Pincode</label>
+                        <input type="text" class="form-control" name="pincode" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Payment Method</label>
+                        <select class="form-select" name="payment_method" required>
+                            <option value="cod">Cash on Delivery</option>
+                            <option value="online">Online Payment</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-success mt-3" type="submit">Place Order</button>
+            </form>
+        </div>
+
+        <!-- Summary -->
+        <div class="col-lg-5 mt-4 mt-lg-0">
+            <div class="card">
+                <div class="card-header">Order Summary</div>
+                <div class="card-body">
+                    {% for item in cart_items %}
+                        <div class="d-flex justify-content-between">
+                            <div>{{ item.product.name }} × {{ item.quantity }}</div>
+                            <div>₹ {{ item.subtotal }}</div>
+                        </div>
+                    {% endfor %}
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold">
+                        <div>Total</div>
+                        <div>₹ {{ total }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <div class="alert alert-warning">Your cart is empty. Add items before checkout.</div>
+        <a class="btn btn-primary" href="{% url 'product_list' %}">Shop now</a>
+    {% endif %}
+</div>
+{% endblock main-content %}
