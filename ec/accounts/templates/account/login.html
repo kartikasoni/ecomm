@@ -1,0 +1,52 @@
+{% extends "app/base.html" %}
+{% load socialaccount %}
+
+{% block title %}Login{% endblock title %}
+
+{% block main-content %}
+<div class="container my-5" style="max-width:480px;">
+  <h2 class="mb-4">Login</h2>
+
+  <form method="post" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div class="mb-3">
+      <label class="form-label">Email or Username</label>
+      {{ form.login }}
+      {{ form.login.errors }}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      {{ form.password }}
+      {{ form.password.errors }}
+    </div>
+
+    {% if redirect_field_value %}
+      <input type="hidden"
+             name="{{ redirect_field_name }}"
+             value="{{ redirect_field_value }}">
+    {% endif %}
+
+    <button class="btn btn-success w-100" type="submit">
+      Login
+    </button>
+  </form>
+
+  <hr class="my-4">
+
+  <h5 class="mb-3">Or continue with</h5>
+
+  <!-- Google login button -->
+  <a href="{% provider_login_url 'google' %}"
+     class="btn btn-outline-dark w-100 mb-2">
+    <i class="bi bi-google"></i> Sign in with Google
+  </a>
+
+  <p class="mt-3">
+    Don't have an account?
+    <a href="{% url 'account_signup' %}">Register here</a>.
+  </p>
+</div>
+{% endblock main-content %}

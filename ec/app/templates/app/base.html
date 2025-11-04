@@ -98,35 +98,36 @@
     <!-- Right Side - User Profile -->
     <ul class="navbar-nav mb-2 mb-lg-0">
         {% if user.is_authenticated %}
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" 
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ user.username }}
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                <li><a class="dropdown-item" href="{% url 'order_list' %}">My Orders</a></li>
-                <li><a class="dropdown-item" href="{% url 'user_logout' %}">Logout</a></li>
-            </ul>
-        </li>
-    
-        <li class="nav-item mx-2">
-            <a href="{% url 'cart_view' %}" class="nav-link text-white">Cart</a>
-        </li>
-    
-        <li class="nav-item mx-2">
-            <a href="{% url 'wishlist_view' %}" class="nav-link text-white">Wishlist</a>
-        </li>
-    {% else %}
-        <li class="nav-item mx-2">
-            <a href="{% url 'user_login' %}" class="nav-link text-white">Login</a>
-        </li>
-        <li class="nav-item mx-2">
-            <a href="{% url 'register' %}" class="nav-link text-white">Register</a>
-        </li>
-    {% endif %}
-    
-        
-    </ul>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white"
+                   href="#" id="profileDropdown"
+                   role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    {{ user.username }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="{% url 'order_list' %}">Orders</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                </ul>
+            </li>
+      
+            <li class="nav-item mx-2">
+                <a href="{% url 'cart_view' %}" class="nav-link text-white">Cart</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a href="{% url 'wishlist_view' %}" class="nav-link text-white">Wishlist</a>
+            </li>
+        {% else %}
+            <li class="nav-item mx-2">
+                <a href="{% url 'account_login' %}" class="nav-link text-white">Login</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a href="{% url 'account_signup' %}" class="nav-link text-white">Register</a>
+            </li>
+        {% endif %}
+      </ul>
+      
 </div>
 </div>
 </nav>  
