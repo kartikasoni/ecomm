@@ -464,10 +464,11 @@
 <script src="{% static 'app/js/main.js' %}"></script>
 <script src="{% static 'app/js/index.js' %}"></script>
 
+
 <!-- Custom JS -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
-  // Fix legacy static links to point to working views
+  // Fix legacy static links to point to working views by anjali 
   var prodHref = "{% url 'product_list' %}";
   document.querySelectorAll('a[href="product-details.html"]').forEach(function(el){ el.setAttribute('href', prodHref); });
   document.querySelectorAll('a[href$="product-details.html"]').forEach(function(el){ el.setAttribute('href', prodHref); });
