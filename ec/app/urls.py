@@ -18,7 +18,14 @@ urlpatterns = [
     path('cart/', views.cart_view, name='cart_view'),
     path('cart/update/<int:cart_id>/', views.update_cart, name='update_cart'),
     path('cart/remove/<int:cart_id>/', views.remove_from_cart, name='remove_from_cart'),
-    
+    #blogs
+
+    path('blog/', views.blog, name='blog'),
+    path('blogdetails/', views.blogdetails, name='blogdetails'),
+    path('About_us/', views.About_us, name='About_us'),
+   path('contact_us/', views.contact_us, name='contact_us'), 
+   path('account_dashboard/', views.account_dashboard, name='account_dashboard'), 
+
     # Wishlist URLs
     path('wishlist/add/<int:product_id>/', views.add_to_wishlist, name='add_to_wishlist'),
     path('wishlist/', views.wishlist_view, name='wishlist_view'),
@@ -36,6 +43,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='user_login'),
     path('logout/', views.user_logout, name='user_logout'),
+       path('forget_password/', views.forget_password, name='forget_password'),
     
 ]
 

@@ -1,0 +1,200 @@
+{%extends 'app/base.html'%}
+{%load static %}
+{% block title %}Home{% endblock title %}
+{% block main-content %}
+<!--start page content-->
+<div class="page-content">
+
+
+   <!--start breadcrumb-->
+   <div class="py-4 border-bottom">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0"> 
+          <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:;">Blog</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Blog Post</li>
+        </ol>
+      </nav>
+    </div>
+   </div>
+   <!--end breadcrumb-->
+
+
+   <!--start product details-->
+ <!--start product details-->
+<section class="section-padding">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Blog Posts -->
+            <div class="col-12 col-xl-8">
+                <div class="d-flex flex-column gap-4">
+                    <!-- Card 1 -->
+                    <div class="card rounded-0">
+                        <img src="{% static 'app/images/ayurveda_img/blog_image.jpg' %}" class="card-img-top rounded-0" alt="Blog Image 1">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center gap-4">
+                                <div class="posted-by">
+                                    <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
+                                </div>
+                                <div class="posted-by">
+                                    <p class="mb-0"><i class="bi bi-chat me-2"></i>18 Comments</p>
+                                </div>
+                                <div class="posted-date">
+                                    <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
+                                </div>
+                            </div>
+                            <h4 class="card-title fw-bold mt-3">Embrace the Healing Power of Ayurveda</h4>
+                            <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable...</p>
+                            <a href="blogdetails.html" class="btn btn-dark btn-ecomm mt-3">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="card rounded-0">
+                        <img src="{% static 'app/images/ayurveda_img/blog_image.jpg' %}" class="card-img-top rounded-0" alt="Blog Image 2">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center gap-4">
+                                <div class="posted-by">
+                                    <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
+                                </div>
+                                <div class="posted-by">
+                                    <p class="mb-0"><i class="bi bi-chat me-2"></i>18 Comments</p>
+                                </div>
+                                <div class="posted-date">
+                                    <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
+                                </div>
+                            </div>
+                            <h4 class="card-title fw-bold mt-3">Embrace the Healing Power of Ayurveda</h4>
+                            <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form...</p>
+                            <a href="blogdetails.html" class="btn btn-dark btn-ecomm mt-3">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="card rounded-0">
+                        <img src="{% static 'app/images/ayurveda_img/pexels-marek-piwnicki-3907296-31346461.jpg' %}" class="card-img-top rounded-0" alt="Blog Image 3">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center gap-4">
+                                <div class="posted-by">
+                                    <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
+                                </div>
+                                <div class="posted-by">
+                                    <p class="mb-0"><i class="bi bi-chat me-2"></i>18 Comments</p>
+                                </div>
+                                <div class="posted-date">
+                                    <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
+                                </div>
+                            </div>
+                            <h4 class="card-title fw-bold mt-3">Embrace the Healing Power of Ayurveda</h4>
+                            <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form...</p>
+                            <a href="blogdetails.html" class="btn btn-dark btn-ecomm mt-3">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-12 col-xl-4">
+                <div class="blog-left-sidebar border p-4">
+                    <form>
+                        <!-- Search -->
+                        <div class="position-relative mb-4">
+                            <input type="text" class="form-control form-control-lg ps-5 rounded-0" placeholder="Search Product...">
+                            <span class="position-absolute top-50 product-show translate-middle-y"><i class="bi bi-search ms-3"></i></span>
+                        </div>
+                        <!-- Blog Categories -->
+                        <div class="blog-categories mb-4">
+                            <h5 class="mb-3 fw-bold">Blog Categories</h5>
+                            <div class="list-group list-group-flush">
+                                <a href="javascript:;" class="list-group-item bg-transparent"><i class="bi bi-chevron-right me-1"></i>Ayurvedic Treatment</a>
+                                <a href="javascript:;" class="list-group-item bg-transparent"><i class="bi bi-chevron-right me-1"></i>Ayurvedic Tips</a>
+                                <a href="javascript:;" class="list-group-item bg-transparent"><i class="bi bi-chevron-right me-1"></i>Remedies to Manage Hypertension</a>
+                                <a href="javascript:;" class="list-group-item bg-transparent"><i class="bi bi-chevron-right me-1"></i>Natural Ayurvedic Remedies for Throat Infection Relief</a>
+                                <a href="javascript:;" class="list-group-item bg-transparent"><i class="bi bi-chevron-right me-1"></i>Ayurvedic Tips</a>
+                            </div>
+                        </div>
+                        <!-- Recent Posts -->
+                        <div class="blog-categories recent-post mb-4">
+                            <h5 class="mb-4 fw-bold">Recent Posts</h5>
+                            <div class="d-flex align-items-start mb-3">
+                                <img src="{% static 'app/images/ayurveda_img/blog_image.jpg' %}" width="100" alt="">
+                                <div class="ms-3">
+                                    <a href="javascript:;" class="fs-6 fw-bold text-content">Embrace the Healing Power of Ayurveda</a>
+                                    <p class="mb-0">March 15, 2021</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-3">
+                                <img src="{% static 'app/images/ayurveda_img/blog_image.jpg' %}" width="100" alt="">
+                                <div class="ms-3">
+                                    <a href="javascript:;" class="fs-6 fw-bold text-content">Embrace the Healing Power of Ayurveda</a>
+                                    <p class="mb-0">March 15, 2021</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-3">
+                                <img src="{% static 'app/images/ayurveda_img/pexels-marek-piwnicki-3907296-31346461.jpg' %}" width="100" alt="">
+                                <div class="ms-3">
+                                    <a href="javascript:;" class="fs-6 fw-bold text-content">Embrace the Healing Power of Ayurveda</a>
+                                    <p class="mb-0">March 15, 2021</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Top Categories -->
+                        <div class="blog-categories">
+                            <h5 class="mb-4 fw-bold">Top Categories</h5>
+                            <div class="tags-box d-flex flex-wrap gap-3">
+                                <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Women’s Wellness</a>
+                                <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Skin Wellness</a>
+                                <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Pain Reliever</a>
+                                <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Immunity Wellness</a>
+                                <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Diabetic Wellness</a>
+                                <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Blood Purifier</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!--end row-->
+
+        <!--start cart-->
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header bg-section-2">
+                <h5 class="mb-0 fw-bold" id="offcanvasRightLabel">8 items in the cart</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="cart-list">
+                    <!-- Cart Item Example -->
+        
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="bottom-product-img">
+                            <a href="product-details.html">
+                                <img src="{% static 'app/images/ayurveda_img/pexels-mareefe-1638280.jpg' %}" width="60" alt="Product {{ i }}">
+                            </a>
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-light mb-1">Product Name {{ i }}</h6>
+                            <p class="mb-0"><strong>1 X $59.00</strong></p>
+                        </div>
+                        <div class="ms-auto fs-5">
+                            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </div>
+                    <hr>
+      
+                </div>
+            </div>
+            <div class="offcanvas-footer p-3 border-top">
+                <div class="d-grid">
+                    <button type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Checkout</button>
+                </div>
+            </div>
+        </div>
+        <!--end cart-->
+
+    </div>
+</section>
+</div>
+<!--end product details-->
+
+{% endblock main-content %}
+<!--end cat-->
+  <!--end page content-->

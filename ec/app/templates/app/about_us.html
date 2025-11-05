@@ -1,0 +1,311 @@
+{%extends 'app/base.html'%}
+{%load static %}
+{% block title %}Home{% endblock title %}
+
+
+{% block information%}
+
+ <!--start page content-->
+<div class="page-content">
+
+
+   <!--start breadcrumb-->
+   <div class="py-4 border-bottom">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0"> 
+          <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:;">Pages</a></li>
+          <li class="breadcrumb-item active" aria-current="page">About Us</li>
+        </ol>
+      </nav>
+    </div>
+   </div>
+   <!--end breadcrumb-->
+
+
+   <!--start product details-->
+{% load static %}
+<section class="section-padding">
+  <div class="container">
+    <!-- Our Story -->
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-xl-6">
+        <h3 class="fw-bold">Our Story</h3>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        </p>
+        <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text.
+          It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+          Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure.
+        </p>
+        <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text.
+          It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+          Richard McClintock, a Latin professor at Hampden-Sydney College.
+        </p>
+      </div>
+      <div class="col-12 col-xl-6 text-center">
+        <img src="{% static 'app/images/ayurveda_img/yoga-with-tibetan-bell-photo.jpg' %}" class="img-fluid rounded" alt="Ayurveda Yoga Image">
+      </div>
+    </div>
+    <!-- End Our Story -->
+
+    <!-- Separator -->
+    <div class="separator section-padding text-center">
+      <div class="line"></div>
+      <h3 class="mb-0 fw-bold">Why Choose Us</h3>
+      <div class="line"></div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="row row-cols-1 row-cols-xl-3 g-4 why-choose">
+      <div class="col d-flex">
+        <div class="card rounded-0 shadow-none w-100 text-center">
+          <div class="card-body">
+            <img src="{% static 'app/images/icons/delivery.png' %}" width="60" alt="Free Shipping Icon">
+            <h5 class="my-3 fw-bold">Free Shipping</h5>
+            <p class="mb-0">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard in some form.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col d-flex">
+        <div class="card rounded-0 shadow-none w-100 text-center">
+          <div class="card-body">
+            <img src="{% static 'app/images/icons/money-bag.png' %}" width="60" alt="Money Back Guarantee Icon">
+            <h5 class="my-3 fw-bold">100% Money Back Guarantee</h5>
+            <p class="mb-0">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard in some form.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col d-flex">
+        <div class="card rounded-0 shadow-none w-100 text-center">
+          <div class="card-body">
+            <img src="{% static 'app/images/icons/support.png' %}" width="60" alt="Support Icon">
+            <h5 class="my-3 fw-bold">Online Support 24/7</h5>
+            <p class="mb-0">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard in some form.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Why Choose Us -->
+
+    <!-- Separator -->
+    <div class="separator section-padding text-center">
+      <div class="line"></div>
+      <h3 class="mb-0 fw-bold">Shop By Brands</h3>
+      <div class="line"></div>
+    </div>
+
+    <!-- Shop By Brands -->
+    <div class="brands">
+      <div class="row row-cols-2 row-cols-lg-5 g-4">
+
+        <div class="col">
+          <div class="p-3 border rounded brand-box text-center">
+            <a href="javascript:void(0);">
+              <img src="{% static 'app/images/icons/support.png' %}" class="img-fluid" alt="Brand {{ i }}">
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- End Brands -->
+  </div>
+</section>
+
+   <!--start product details-->
+
+ </div>
+  <!--end page content-->
+  <!--start cart-->
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header bg-section-2"> 
+    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel">8 items in the cart</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+      <div class="cart-list">
+
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center gap-3">
+          <div class="bottom-product-img">
+            <a href="product-details.html">
+              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            </a>
+          </div>
+          <div class="">
+            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
+            <p class="mb-0"><strong>1 X $59.00</strong>
+            </p>
+          </div>
+          <div class="ms-auto fs-5">
+            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offcanvas-footer p-3 border-top">
+      <div class="d-grid">
+        <button type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Checkout</button>
+      </div>
+    </div>
+
+</div>
+<!--end cat-->
+    {% endblock information%}

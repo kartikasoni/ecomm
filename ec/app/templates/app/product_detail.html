@@ -2,240 +2,473 @@
 {% load static %}
 
 {% block title %}{{ product.name }}{% endblock title %}
-
 {% block main-content %}
-<div class="container my-5">
-    <div class="row">
-        <!-- Product Image -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow">
-                <div style="height: 500px; overflow: hidden; background: #f8f9fa;">
-                    {% if product.image_url %}
-                        <img src="{{ product.image_url.url }}" 
-                             class="card-img-top" 
-                             alt="{{ product.name }}" 
-                             style="height: 100%; width: 100%; object-fit: contain; padding: 20px;">
-                    {% else %}
-                        <div class="d-flex align-items-center justify-content-center h-100">
-                            <i class="fas fa-image fa-5x text-muted"></i>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        
-        <!-- Product Details -->
-        <div class="col-md-6">
-            <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'product_list' %}">Products</a></li>
-                    <li class="breadcrumb-item active">{{ product.name }}</li>
-                </ol>
-            </nav>
-            
-            <!-- Title -->
-            <h1 class="mb-3" style="color: #2d8659; font-weight: bold;">{{ product.name }}</h1>
-            
-            <!-- Category badge -->
-            <div class="mb-3">
-                <span class="badge" style="background: #2d8659; font-size: 14px;">
-                    {{ product.category }}
-                </span>
-            </div>
-            
-            <!-- Price -->
-            <h2 class="mb-4" style="color: #2d8659;">₹{{ product.price }}</h2>
-            
-            <!-- Stock info -->
-            {% if product.stock > 0 %}
-                <p class="text-success fs-5">
-                    <i class="fas fa-check-circle"></i> In Stock ({{ product.stock }} available)
-                </p>
-            {% else %}
-                <p class="text-danger fs-5">
-                    <i class="fas fa-times-circle"></i> Out of Stock
-                </p>
-            {% endif %}
-            
-            <!-- Description -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Product Description</h5>
-                    <p class="card-text">
-                        {{ product.description|default:"No description available for this product." }}
-                    </p>
-                </div>
-            </div>
-            
-            <!-- ===== PURCHASE AREA (Quantity + Buttons) ===== -->
-            {% if product.stock > 0 %}
-                <!-- Quantity Selector -->
-                <div class="mb-4">
-                    <label for="quantityInput" class="form-label fw-bold">Quantity:</label>
-                    <div class="input-group" style="max-width: 180px;">
-                        <button class="btn btn-outline-secondary" type="button" id="decreaseQty">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <input type="number"
-                               class="form-control text-center"
-                               id="quantityInput"
-                               value="1"
-                               min="1"
-                               max="{{ product.stock }}">
-                        <button class="btn btn-outline-secondary" type="button" id="increaseQty">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                    <div class="form-text">Max {{ product.stock }}</div>
-                </div>
+<!--start product details-->
+<div class="page-content">
 
-                {% if user.is_authenticated %}
-                    <!-- ADD TO CART FORM -->
-                    <form id="addToCartForm"
-                          action="{% url 'add_to_cart' product.product_id %}"
-                          method="post"
-                          class="mb-3">
-                        {% csrf_token %}
-                        <!-- This hidden input will be synced with quantityInput via JS -->
-                        <input type="hidden" name="quantity" id="cartQuantityField" value="1">
-                        <button type="submit"
-                                class="btn btn-success w-100 mb-2">
-                            <i class="bi bi-bag-plus"></i> Add to Cart
-                        </button>
-                    </form>
 
-                    <!-- BUY NOW FORM -->
-                    <form id="buyNowForm"
-                          action="{% url 'add_to_cart' product.product_id %}?buy_now=1"
-                          method="post"
-                          class="mb-3">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" id="buyNowQuantityField" value="1">
-                        <button type="submit"
-                                class="btn btn-dark w-100">
-                            Buy Now
-                        </button>
-                    </form>
-
-                    <!-- ADD TO WISHLIST -->
-                    <a href="{% url 'add_to_wishlist' product.product_id %}"
-                       class="btn btn-outline-danger w-100 mb-4">
-                        <i class="bi bi-heart"></i> Add to Wishlist
-                    </a>
-
-                {% else %}
-                    <!-- Not logged in -->
-                    <div class="alert alert-warning">
-                        Please <a href="{% url 'user_login' %}">login</a> to purchase or save items.
-                    </div>
-                {% endif %}
-            {% else %}
-                <!-- Out of stock case -->
-                <div class="alert alert-danger">
-                    This product is currently out of stock.
-                </div>
-
-                {% if not user.is_authenticated %}
-                    <div class="alert alert-warning">
-                        Want to wishlist it? <a href="{% url 'user_login' %}">Login</a> first.
-                    </div>
-                {% else %}
-                    <a href="{% url 'add_to_wishlist' product.product_id %}"
-                       class="btn btn-outline-danger w-100 mb-4">
-                        <i class="bi bi-heart"></i> Add to Wishlist
-                    </a>
-                {% endif %}
-            {% endif %}
-            <!-- ===== END PURCHASE AREA ===== -->
-            
-            <!-- Product Info -->
-            <div class="card mt-4">
-                <div class="card-body">
-                    <h6 class="card-title fw-bold">Product Information</h6>
-                    <ul class="list-unstyled mb-0">
-                        <li class="mb-2">
-                            <strong>Category:</strong> {{ product.category }}
-                        </li>
-                        <li class="mb-2">
-                            <strong>Product ID:</strong> #{{ product.product_id }}
-                        </li>
-                        <li class="mb-2">
-                            <strong>Availability:</strong> 
-                            {% if product.stock > 0 %}
-                                <span class="text-success">In Stock</span>
-                            {% else %}
-                                <span class="text-danger">Out of Stock</span>
-                            {% endif %}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Back Button -->
-            <div class="mt-4">
-                <a href="{% url 'product_list' %}" class="btn btn-secondary">
-                    <i class="fas fa-arrow-left"></i> Back to Products
-                </a>
-            </div>
-        </div>
+   <!--start breadcrumb-->
+   <div class="py-4 border-bottom">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0"> 
+          <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:;">Shop</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Page Details</li>
+        </ol>
+      </nav>
     </div>
-</div>
+   </div>
+   <!--end breadcrumb-->
+   <section class="py-4">
+    <div class="container">
+       <div class="row g-4">
+          <div class="col-12 col-xl-7">
+            <div class="product-images">
+                <div class="product-zoom-images">
+                  <div class="row row-cols-2 g-3">
+                    <div class="col">
+                     <div class="col">
+          {% if product.image_url %}
+           <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="aassets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg">       
+            <img src="{{ product.image_url.url }}"
+                 class="card-img-top"
+                 alt="{{ product.name }}">
+  </div>
+          {% else %}
+            <div class="d-flex align-items-center justify-content-center h-100">
+              <i class="fas fa-image fa-5x text-muted"></i>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+     <div class="col-12 col-xl-5">
+            <div class="product-info">
+                 <h4 class="product-title fw-bold mb-1">{ product.name }</h4>
+                  <p class="mb-0">All the Lorem Ipsum generators on the Internet tend to repeat
+                    All the Lorem Ipsum generators on the Internet tend to repeat
+                  </p>
+          
+<div class="product-rating">
+                    <div class="hstack gap-2 border p-1 mt-3 width-content">
+                      <div><span class="rating-number">4.8</span><i class="bi bi-star-fill ms-1 text-warning"></i></div>
+                      <div class="vr"></div>
+                      <div>162 Ratings</div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="product-price d-flex align-items-center gap-3">
+                     <div class="h4 fw-bold">$458</div>
+                     <div class="h5 fw-light text-muted text-decoration-line-through">$2089</div>
+                     <div class="h4 fw-bold text-danger">(70% off)</div>  
+                  </div>
+                  <p class="fw-bold mb-0 mt-1 text-success">inclusive of all taxes</p>
 
+                  <div class="more-colors mt-4">
+                    <h6 class="fw-bold mb-3">{{ product.category }}</h6>
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="">
+                        <a href="javascript:;">
+                          <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" width="65" alt="">
+                        </a>
+                      </div>
+                      <div class="">
+                        <a href="javascript:;">
+                          <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" width="65" alt="">
+                        </a>
+                      </div>
+                      <div class="">
+                        <a href="javascript:;">
+                          <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" width="65" alt="">
+                        </a>
+                      </div>
+                      <div class="">
+                        <a href="javascript:;">
+                          <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" width="65" alt="">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="size-chart mt-4">
+                    <h6 class="fw-bold mb-3">Select Quantity</h6>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                     <div class="">
+                       <button type="button">XS</button>
+                     </div>
+                     <div class="">
+                      <button type="button">S</button>
+                    </div>
+                     <div class="">
+                      <button type="button">M</button>
+                    </div>
+                    <div class="">
+                      <button type="button">L</button>
+                    </div>
+                    <div class="">
+                      <button type="button">XL</button>
+                    </div>
+                    <div class="">
+                      <button type="button">XXL</button>
+                    </div>
+                   </div>
+                  </div>
+                  <div class="cart-buttons mt-3">
+                    <div class="buttons d-flex flex-column flex-lg-row gap-3 mt-4">
+                      <a href="{% url 'add_to_cart' product.product_id %}" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 col-lg-6"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
+                      <a href="{% url 'add_to_wishlist' product.product_id %}" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a>
+                    </div>
+                  </div>
+                  <hr class="my-3">
+                  <div class="product-info">
+                    <h6 class="fw-bold mb-3">Product Details</h6>
+                    {{ product.description|default:"No description available for this product." }}
+                  </div>
+                    <h2 class="mb-4" style="color: #2d8659;">₹{{ product.price }}</h2>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    
+
+      <!-- Stock info -->
+      {% if product.stock > 0 %}
+        <p class="text-success fs-5">
+          <i class="fas fa-check-circle"></i> In Stock ({{ product.stock }} available)
+        </p>
+      {% else %}
+        <p class="text-danger fs-5">
+          <i class="fas fa-times-circle"></i> Out of Stock
+        </p>
+      {% endif %}
+
+      <!-- Description -->
+      
+
+      <!-- ===== PURCHASE AREA ===== -->
+      {% if product.stock > 0 %}
+        <div class="mb-4">
+          <label for="quantityInput" class="form-label fw-bold">Quantity:</label>
+          <div class="input-group" style="max-width: 180px;">
+            <button class="btn btn-outline-secondary" type="button" id="decreaseQty">
+              <i class="fas fa-minus"></i>
+            </button>
+            <input type="number"
+                   class="form-control text-center"
+                   id="quantityInput"
+                   value="1"
+                   min="1"
+                   max="{{ product.stock }}">
+            <button class="btn btn-outline-secondary" type="button" id="increaseQty">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="form-text">Max {{ product.stock }}</div>
+        </div>
+
+        {% if user.is_authenticated %}
+          <!-- ADD TO CART -->
+          <form id="addToCartForm" action="{% url 'add_to_cart' product.product_id %}" method="post" class="mb-3">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" id="cartQuantityField" value="1">
+            <button type="submit" class="btn btn-success w-100 mb-2">
+              <i class="bi bi-bag-plus"></i> Add to Cart
+            </button>
+          </form>
+
+          <!-- BUY NOW -->
+          <form id="buyNowForm" action="{% url 'add_to_cart' product.product_id %}?buy_now=1" method="post" class="mb-3">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" id="buyNowQuantityField" value="1">
+            <button type="submit" class="btn btn-dark w-100">Buy Now</button>
+          </form>
+
+          <!-- ADD TO WISHLIST -->
+          <a href="{% url 'add_to_wishlist' product.product_id %}"
+             class="btn btn-outline-danger w-100 mb-4">
+            <i class="bi bi-heart"></i> Add to Wishlist
+          </a>
+        {% else %}
+          <div class="alert alert-warning">
+            Please <a href="{% url 'user_login' %}">login</a> to purchase or save items.
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="alert alert-danger">
+          This product is currently out of stock.
+        </div>
+
+        {% if not user.is_authenticated %}
+          <div class="alert alert-warning">
+            Want to wishlist it? <a href="{% url 'user_login' %}">Login</a> first.
+          </div>
+        {% else %}
+          <a href="{% url 'add_to_wishlist' product.product_id %}" class="btn btn-outline-danger w-100 mb-4">
+            <i class="bi bi-heart"></i> Add to Wishlist
+          </a>
+        {% endif %}
+      {% endif %}
+      <!-- ===== END PURCHASE AREA ===== -->
+
+      <!-- Product Info -->
+      <div class="card mt-4">
+        <div class="card-body">
+          <h6 class="card-title fw-bold">Product Information</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><strong>Category:</strong> {{ product.category }}</li>
+            <li class="mb-2"><strong>Product ID:</strong> #{{ product.product_id }}</li>
+            <li class="mb-2">
+              <strong>Availability:</strong>
+              {% if product.stock > 0 %}
+                <span class="text-success">In Stock</span>
+              {% else %}
+                <span class="text-danger">Out of Stock</span>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Back Button -->
+      <div class="mt-4">
+        <a href="{% url 'product_list' %}" class="btn btn-secondary">
+          <i class="fas fa-arrow-left"></i> Back to Products
+        </a>
+      </div>
+    </div>
+    <!--start product details-->
+  <section class="section-padding">
+    <div class="container">
+      <div class="separator pb-3">
+        <div class="line"></div>
+        <h3 class="mb-0 h3 fw-bold">Similar Products</h3>
+        <div class="line"></div>
+      </div>
+      <div class="similar-products">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4">
+          <div class="col">
+            <a href="javascript:;">
+            <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-n-voitkevich-7526013.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="javascript:;">
+            <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="javascript:;">
+            <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511128.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="javascript:;">
+            <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-andri-file-288172640-34534474.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+            </div>
+           </a>
+          </div>
+          <div class="col">
+            <a href="javascript:;">
+            <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511128.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+             </div>
+             </a>
+          </div>
+          <div class="col">
+            <a href="javascript:;">
+            <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+            </div>
+             </a>
+          </div>
+          <div class="col">
+            <a href="javascript:;">
+            <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+            </div>
+           </a>
+          </div>
+          <div class="col">
+            <a href="javascript:;">
+            <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+            </div>
+           </a>
+          </div>
+          <div class="col">
+            <a href="javascript:;">
+            <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">CAyurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="javascript:;">
+             <div class="card rounded-0">
+              <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" alt="" class="card-img-top rounded-0">
+              <div class="card-body border-top">
+                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
+                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
+                <div class="product-price d-flex align-items-center gap-3 mt-2">
+                  <div class="h6 fw-bold">$458</div>
+                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
+                  <div class="h6 fw-bold text-danger">(70% off)</div>
+                </div>
+              </div>
+            </div>
+           </a>
+          </div>
+
+  
+        </div>
+        <!--end row-->
+      </div>
+    </div>
+  </section>
+  <!--end product details-->
+
+
+<!-- === JavaScript for Quantity & Form Sync === -->
 <script>
-    // --- Quantity control sync ---
-    // DOM elements
+  document.addEventListener("DOMContentLoaded", function() {
     const qtyInput = document.getElementById('quantityInput');
     const decBtn = document.getElementById('decreaseQty');
     const incBtn = document.getElementById('increaseQty');
-    const maxQty = parseInt(qtyInput.getAttribute('max'));
+    const maxQty = qtyInput ? parseInt(qtyInput.getAttribute('max')) : 1;
 
-    // Hidden inputs in forms
     const cartQtyField = document.getElementById('cartQuantityField');
     const buyNowQtyField = document.getElementById('buyNowQuantityField');
 
     function syncHiddenFields() {
-        if (cartQtyField) cartQtyField.value = qtyInput.value;
-        if (buyNowQtyField) buyNowQtyField.value = qtyInput.value;
+      if (cartQtyField) cartQtyField.value = qtyInput.value;
+      if (buyNowQtyField) buyNowQtyField.value = qtyInput.value;
     }
 
-    // decrease
     if (decBtn) {
-        decBtn.addEventListener('click', function() {
-            let current = parseInt(qtyInput.value);
-            if (current > 1) {
-                qtyInput.value = current - 1;
-                syncHiddenFields();
-            }
-        });
+      decBtn.addEventListener('click', function() {
+        let current = parseInt(qtyInput.value) || 1;
+        if (current > 1) {
+          qtyInput.value = current - 1;
+          syncHiddenFields();
+        }
+      });
     }
 
-    // increase
     if (incBtn) {
-        incBtn.addEventListener('click', function() {
-            let current = parseInt(qtyInput.value);
-            if (current < maxQty) {
-                qtyInput.value = current + 1;
-                syncHiddenFields();
-            }
-        });
+      incBtn.addEventListener('click', function() {
+        let current = parseInt(qtyInput.value) || 1;
+        if (current < maxQty) {
+          qtyInput.value = current + 1;
+          syncHiddenFields();
+        }
+      });
     }
 
-    // manual edit
     if (qtyInput) {
-        qtyInput.addEventListener('change', function() {
-            let current = parseInt(qtyInput.value);
-            if (isNaN(current) || current < 1) {
-                qtyInput.value = 1;
-            } else if (current > maxQty) {
-                qtyInput.value = maxQty;
-            }
-            syncHiddenFields();
-        });
+      qtyInput.addEventListener('change', function() {
+        let current = parseInt(qtyInput.value);
+        if (isNaN(current) || current < 1) qtyInput.value = 1;
+        else if (current > maxQty) qtyInput.value = maxQty;
+        syncHiddenFields();
+      });
     }
 
-    // initial sync
+    // Initial sync
     syncHiddenFields();
+  });
 </script>
 {% endblock main-content %}
+

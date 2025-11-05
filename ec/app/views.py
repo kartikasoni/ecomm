@@ -7,15 +7,31 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.shortcuts import render
 from django.db.models import Sum, F
 from .models import Product, Cart, Wishlist, Order, OrderItem
 from decimal import Decimal
+
 # Create your views here.
 def home(request):
     """Home page view"""
     return render(request,"app/home.html")
+def blog(request):
+    return render(request, "app/blog.html")
+def forget_password(request):
+    return render(request, "app/forget_password.html")
+  
+def account_dashboard(request):
+    return render(request, "app/account_dashboard.html")
 
-
+def blogdetails(request):
+    return render(request, "app/blogdetails.html")
+def About_us(request):
+    return render(request, "app/About_us.html")
+def wishlist(request):
+    return render(request, "app/wishlist.html")
+def contact_us(request):
+    return render(request, "app/contact_us.html")
 
 def product_list(request):
      """Display all products"""

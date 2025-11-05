@@ -2,10 +2,38 @@
 {% load static %}
 
 {% block title %}Your Cart{% endblock title %}
+<!--start page content-->
+<div class="page-content">
 
+
+   <!--start breadcrumb-->
+   <div class="py-4 border-bottom">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0"> 
+          <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:;">Shop</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Cart</li>
+        </ol>
+      </nav>
+    </div>
+   </div>
+   <!--end breadcrumb-->
+
+ </div>
+  <!--end page content-->
 {% block main-content %}
-<div class="container my-4">
-    <h2 class="mb-3">Shopping Cart</h2>
+<section class="section-padding">
+    <div class="container">
+      <div class="d-flex align-items-center px-3 py-2 border mb-4">
+        <div class="text-start">
+          <h4 class="mb-0 h4 fw-bold">My Bag (8 items)</h4>
+       </div>
+       <div class="ms-auto">
+        <button type="button" class="btn btn-light btn-ecomm">Continue to Cart</button>
+       </div>
+      </div>
+	   
 
     {% if cart_items %}
         <div class="table-responsive">
@@ -77,4 +105,6 @@
         <a class="btn btn-primary" href="{% url 'product_list' %}">Browse products</a>
     {% endif %}
 </div>
+
+</section>
 {% endblock main-content %}
