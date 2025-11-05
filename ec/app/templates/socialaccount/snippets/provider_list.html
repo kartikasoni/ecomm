@@ -1,0 +1,29 @@
+{% load socialaccount %}
+
+{% get_providers as socialaccount_providers %}
+
+{% for provider in socialaccount_providers %}
+{% if provider.id == "openid" %}
+{% for brand in provider.get_brands %}
+<div class="mb-3">
+  <a title="{{brand.name}}" 
+     class="btn btn-primary w-100"
+     href="{% provider_login_url provider.id openid=brand.openid_url process=process %}">
+    <i class="bi bi-{{brand.id}} me-2"></i>{{brand.name}}
+  </a>
+</div>
+{% endfor %}
+{% endif %}
+<div class="mb-3">
+  <a title="{{provider.name}}" 
+     class="btn {% if provider.id == 'google' %}btn-danger{% else %}btn-primary{% endif %} w-100"
+     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
+    <i class="bi bi-{{provider.id}} me-2"></i>
+    {% if process == "connect" %}
+      {% blocktrans with provider.name as provider %}Connect to {{provider}}{% endblocktrans %}
+    {% else %}
+      {% blocktrans with provider.name as provider %}Sign in with {{provider}}{% endblocktrans %}
+    {% endif %}
+  </a>
+</div>
+{% endfor %}

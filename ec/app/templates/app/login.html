@@ -1,4 +1,6 @@
 {% extends "app/base.html" %}
+{% load socialaccount %}
+{% load static %}
 {% block title %}Login · My Shop{% endblock %}
 
 {% block main-content %}
@@ -31,41 +33,52 @@
                  <p class="mb-2">Join / Sign In using</p>
                  <div class="social-login mb-4">
                   <div class="row g-4">
-                    <div class="col-xl-6">
-                        <button type="button" class="btn bg-facebook btn-ecomm w-100 text-white"><i class="bi bi-facebook me-2"></i>Facebook</button>
+                    <div class="col-12">
+                      <a href="{% provider_login_url 'google' %}" class="btn bg-danger btn-ecomm w-100 text-white">
+                        <i class="bi bi-google me-2"></i>Continue with Google
+                      </a>
                     </div>
-                    <div class="col-xl-6">
-                      <button type="button" class="btn bg-pinterest btn-ecomm w-100 text-white"><i class="bi bi-google me-2"></i>Google</button>
                   </div>
-                   </div>
                  </div>
                  <div class="separator mb-4">
                   <div class="line"></div>
                   <p class="mb-0 fw-bold">Or</p>
                   <div class="line"></div>
                 </div>
-                 <form>
+                 <form method="POST">
+                    {% csrf_token %}
                     <div class="row g-4">
                       <div class="col-12">
-                          <label for="exampleUsername" class="form-label">Username</label>
-                          <input type="text" class="form-control rounded-0" id="exampleUsername">
+                          <label for="username" class="form-label">Username</label>
+                          <input type="text" class="form-control rounded-0" id="username" name="username" required>
                       </div>
                       <div class="col-12">
-                        <label for="examplePassword" class="form-label">Password</label>
-                        <input type="text" class="form-control rounded-0" id="examplePassword">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control rounded-0" id="password" name="password" required>
                       </div>
                       <div class="col-12">
-                        <a href="javascript:;" class="text-content btn bg-light rounded-0 w-100"><i class="bi bi-lock me-2"></i>Forgot Password</a>
+                        <a href="{% url 'forget_password' %}" class="text-content btn bg-light rounded-0 w-100">
+                          <i class="bi bi-lock me-2"></i>Forgot Password
+                        </a>
                       </div>
-                     <div class="col-12">
-                       <hr class="my-0">
-                     </div>
                       <div class="col-12">
-                        <button type="button" class="btn btn-dark rounded-0 btn-ecomm w-100">Login</button>
+                        <hr class="my-0">
+                      </div>
+                      <div class="col-12">
+                        <button type="submit" class="btn btn-dark rounded-0 btn-ecomm w-100">Login</button>
                       </div>
                       <div class="col-12 text-center">
-                        <p class="mb-0 rounded-0 w-100">Don't have an account? <a href="csrf_token " class="text-danger">Sign Up</a></p>
+                        <p class="mb-0 rounded-0 w-100">Don't have an account? <a href="{% url 'register' %}" class="text-danger">Sign Up</a></p>
                       </div>
+                      {% if messages %}
+                        <div class="col-12">
+                          {% for message in messages %}
+                            <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %} mt-3">
+                              {{ message }}
+                            </div>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
                     </div><!---end row-->
                  </form>
                </div>

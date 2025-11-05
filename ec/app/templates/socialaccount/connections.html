@@ -1,0 +1,76 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Account Connections" %}{% endblock %}
+
+{% block main-content %}
+<!--start breadcrumb-->
+<div class="py-4 border-bottom">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Account</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{% trans "Account Connections" %}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<!--end breadcrumb-->
+
+<div class="container section-padding">
+  <div class="row">
+    <div class="col-12 col-lg-6 col-xl-5 col-xxl-4 mx-auto">
+      <div class="card rounded-0">
+        <div class="card-body p-4">
+          <h4 class="mb-0 fw-bold">{% trans "Account Connections" %}</h4>
+          <hr>
+
+          {% if form.accounts %}
+          <p>{% blocktrans %}You can sign in to your account using any of the following accounts:{% endblocktrans %}</p>
+
+          <form method="post" action="{% url 'socialaccount_connections' %}">
+            {% csrf_token %}
+            <div class="socialaccount_connections">
+              {% for base_account in form.accounts %}
+              <div class="d-flex align-items-center justify-content-between mb-3 p-3 border rounded">
+                <div>
+                  <label for="id_account_{{ base_account.id }}">
+                    <input id="id_account_{{ base_account.id }}" type="radio" name="account" value="{{ base_account.id }}"/>
+                    <span class="socialaccount_provider {{ base_account.provider }} {{ base_account.get_brand.id }}">
+                      {{base_account.get_brand.name}}
+                    </span>
+                    {{ base_account.email }}
+                  </label>
+                </div>
+                <div>
+                  <a class="btn btn-sm btn-outline-danger" href="{% url 'socialaccount_disconnect' base_account.provider base_account.id %}">
+                    {% trans "Disconnect" %}
+                  </a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="mt-4">
+              <button class="btn btn-danger" type="submit">{% trans 'Remove' %}</button>
+            </div>
+          </form>
+
+          {% else %}
+          <p>{% trans 'You currently have no social network accounts connected to this account.' %}</p>
+          {% endif %}
+
+          <h5 class="mt-4">{% trans 'Add a Third Party Account' %}</h5>
+          <hr>
+
+          <div class="socialaccount_providers">
+            {% include "socialaccount/snippets/provider_list.html" with process="connect" %}
+          </div>
+
+          {% include "socialaccount/snippets/login_extra.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

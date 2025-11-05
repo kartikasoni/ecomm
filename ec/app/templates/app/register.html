@@ -49,29 +49,29 @@
                   <div class="line"></div>
                 </div>
                 
-                 <form method="post">
+                 <form method="POST">
                     {% csrf_token %}
                     <div class="row g-4">
                       <div class="col-12">
-                          <label for="exampleName" class="form-label">Name</label>
-                          <input type="text" class="form-control rounded-0" id="exampleName">
+                          <label for="username" class="form-label">Username</label>
+                          <input type="text" class="form-control rounded-0" id="username" name="username" required>
                       </div>
                       <div class="col-12">
-                        <label for="exampleMobile" class="form-label">Mobile</label>
-                        <input type="text" class="form-control rounded-0" id="exampleMobile">
+                        <label for="email" class="form-label">Email ID</label>
+                        <input type="email" class="form-control rounded-0" id="email" name="email" required>
                       </div>
                       <div class="col-12">
-                        <label for="exampleEmail" class="form-label">Email ID</label>
-                        <input type="text" class="form-control rounded-0" id="exampleEmail">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control rounded-0" id="password" name="password" required>
                       </div>
                       <div class="col-12">
-                        <label for="examplePassword" class="form-label">Password</label>
-                        <input type="text" class="form-control rounded-0" id="examplePassword">
+                        <label for="password2" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control rounded-0" id="password2" name="password2" required>
                       </div>
                       <div class="col-12">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
+                          <input class="form-check-input" type="checkbox" value="agreed" id="terms" name="terms" required>
+                          <label class="form-check-label" for="terms">
                             I agree to Terms and Conditions
                           </label>
                         </div>
@@ -80,11 +80,20 @@
                        <hr class="my-0">
                       </div>
                       <div class="col-12">
-                        <button type="button" class="btn btn-dark rounded-0 btn-ecomm w-100">Sign Up</button>
+                        <button type="submit" class="btn btn-dark rounded-0 btn-ecomm w-100">Sign Up</button>
                       </div>
                       <div class="col-12 text-center">
-                        <p class="mb-0 rounded-0 w-100">Already have an account? <a href="href={% url 'user_login' %}  class="text-danger">Sign In</a></p>
+                        <p class="mb-0 rounded-0 w-100">Already have an account? <a href="{% url 'user_login' %}" class="text-danger">Sign In</a></p>
                       </div>
+                      {% if messages %}
+                        <div class="col-12">
+                          {% for message in messages %}
+                            <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %} mt-3">
+                              {{ message }}
+                            </div>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
                     </div><!---end row-->
                  </form>
                </div>

@@ -14,7 +14,7 @@
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0"> 
-          <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
           <li class="breadcrumb-item"><a href="javascript:;">Pages</a></li>
           <li class="breadcrumb-item active" aria-current="page">About Us</li>
         </ol>
@@ -141,7 +141,7 @@
 
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>

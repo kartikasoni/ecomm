@@ -41,7 +41,7 @@
   <!--start top header-->
   <header class="top-header">
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container">
-      <a class="navbar-brand d-none d-xl-inline" href="index.html"><img src="{% static 'app/images/ayurveda_img/logo_icon.jpg' %}" width="60"
+    <a class="navbar-brand d-none d-xl-inline" href="{% url 'home' %}"><img src="{% static 'app/images/ayurveda_img/logo_icon.jpg' %}" width="60"
           alt=""></a>
       <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasNavbar">
@@ -56,7 +56,7 @@
         <div class="offcanvas-body primary-menu">
           <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
           <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
@@ -66,17 +66,17 @@
     <div class="row">
 
       <!-- Wellness Category -->
-      <div class="col-12 col-xl-4">
+          <div class="col-12 col-xl-4">
         <h6 class="large-menu-title">Wellness Care</h6>
         <ul class="list-unstyled">
-          <li><a href="category.html">Women’s Wellness</a></li>
-          <li><a href="category.html">Men’s Wellness</a></li>
-          <li><a href="category.html">Immunity Booster</a></li>
-          <li><a href="category.html">Digestive Health</a></li>
-          <li><a href="category.html">Liver Care</a></li>
-          <li><a href="category.html">Diabetic Care</a></li>
-          <li><a href="category.html">Heart & Cholesterol </a></li>
-          <li><a href="category.html">Joint & Pain Relief</a></li>
+          <li><a href="{% url 'product_list' %}">Women’s Wellness</a></li>
+          <li><a href="{% url 'product_list' %}">Men’s Wellness</a></li>
+          <li><a href="{% url 'product_list' %}">Immunity Booster</a></li>
+          <li><a href="{% url 'product_list' %}">Digestive Health</a></li>
+          <li><a href="{% url 'product_list' %}">Liver Care</a></li>
+          <li><a href="{% url 'product_list' %}">Diabetic Care</a></li>
+          <li><a href="{% url 'product_list' %}">Heart & Cholesterol </a></li>
+          <li><a href="{% url 'product_list' %}">Joint & Pain Relief</a></li>
         </ul>
       </div>
 
@@ -84,14 +84,14 @@
       <div class="col-12 col-xl-4">
         <h6 class="large-menu-title">Product Types</h6>
         <ul class="list-unstyled">
-          <li><a href="category.html">Herbal Juices</a></li>
-          <li><a href="category.html">Churna & Powders</a></li>
-          <li><a href="category.html">Tablets & Capsules</a></li>
-          <li><a href="category.html">Herbal Oils</a></li>
-          <li><a href="category.html">Aloe Vera Products</a></li>
-          <li><a href="category.html">Skin Care</a></li>
-          <li><a href="category.html">Hair Care</a></li>
-          <li><a href="category.html">Body Detox</a></li>
+          <li><a href="{% url 'product_list' %}">Herbal Juices</a></li>
+          <li><a href="{% url 'product_list' %}">Churna & Powders</a></li>
+          <li><a href="{% url 'product_list' %}">Tablets & Capsules</a></li>
+          <li><a href="{% url 'product_list' %}">Herbal Oils</a></li>
+          <li><a href="{% url 'product_list' %}">Aloe Vera Products</a></li>
+          <li><a href="{% url 'product_list' %}">Skin Care</a></li>
+          <li><a href="{% url 'product_list' %}">Hair Care</a></li>
+          <li><a href="{% url 'product_list' %}">Body Detox</a></li>
         </ul>
       </div>
 
@@ -111,44 +111,43 @@
                 Shop
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="cart.html">Shop Cart</a></li>
-                <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
-                <li><a class="dropdown-item" href="product-details.html">Product Details</a></li>
-                <li><a class="dropdown-item" href="payment-method.html">Payment Method</a></li>
-                <li><a class="dropdown-item" href="billing-details.html">Billing Details</a></li>
-                <li><a class="dropdown-item" href="address.html">Addresses</a></li>
-                <li><a class="dropdown-item" href="category.html">Categories</a></li>
+                <li><a class="dropdown-item" href="{% url 'cart_view' %}">Shop Cart</a></li>
+                <li><a class="dropdown-item" href="{% url 'wishlist_view' %}">Wishlist</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}">Product Details</a></li>
+                <li><a class="dropdown-item" href="{% url 'checkout' %}">Payment Method</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_dashboard' %}">Billing Details</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_dashboard' %}">Addresses</a></li>
+                <li><a class="dropdown-item" href="{% url 'product_list' %}">Categories</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about-us.html">About</a>
+              <a class="nav-link" href="{% url 'About_us' %}">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact-us.html">Contact</a>
+              <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
                 Account
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="account-dashboard.html">Dashboard</a></li>
-                <li><a class="dropdown-item" href="account-orders.html">My Orders</a></li>
-                <li><a class="dropdown-item" href="account-profile.html">My Profile</a></li>
-                <li><a class="dropdown-item" href="account-edit-profile.html">Edit Profile</a></li>
-                <li><a class="dropdown-item" href="account-saved-address.html">Addresses</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_dashboard' %}">Dashboard</a></li>
+                <li><a class="dropdown-item" href="{% url 'order_list' %}">My Orders</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_dashboard' %}">My Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_dashboard' %}">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_dashboard' %}">Addresses</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="authentication-login.html">Login</a></li>
-                <li><a class="dropdown-item" href="authentication-register.html">Register</a></li>
-                <li><a class="dropdown-item" href="authentication-reset-password.html">Password</a></li>
+                <li><a class="dropdown-item" href="{% url 'user_login' %}">Login</a></li>
+                <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
+                <li><a class="dropdown-item" href="{% url 'forget_password' %}">Password</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blog.html">
+              <a class="nav-link" href="{% url 'blog' %}">
                 Blog
               </a>
-             
             </li>
           </ul>
         </div>
@@ -162,10 +161,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="search.html"><i class="bi bi-search"></i></a>
+          <a class="nav-link" href="{% url 'product_list' %}"><i class="bi bi-search"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="wishlist.html"><i class="bi bi-suit-heart"></i></a>
+          <a class="nav-link" href="{% url 'wishlist_view' %}"><i class="bi bi-suit-heart"></i></a>
         </li>
         <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
           <a class="nav-link position-relative" href="javascript:;">
@@ -174,7 +173,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="account-dashboard.html"><i class="bi bi-person-circle"></i></a>
+          <a class="nav-link" href="{% url 'account_dashboard' %}"><i class="bi bi-person-circle"></i></a>
         </li>
       </ul>
     </nav>
@@ -286,7 +285,7 @@
 
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -302,7 +301,7 @@
         <hr>
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -318,7 +317,7 @@
         <hr>
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -334,7 +333,7 @@
         <hr>
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -350,7 +349,7 @@
         <hr>
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -366,7 +365,7 @@
         <hr>
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -382,7 +381,7 @@
         <hr>
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -398,7 +397,7 @@
         <hr>
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -414,7 +413,7 @@
         <hr>
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -430,7 +429,7 @@
         <hr>
         <div class="d-flex align-items-center gap-3">
           <div class="bottom-product-img">
-            <a href="product-details.html">
+            <a href="{% url 'product_list' %}">
               <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
             </a>
           </div>
@@ -466,6 +465,19 @@
 <script src="{% static 'app/js/index.js' %}"></script>
 
 <!-- Custom JS -->
- 
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  // Fix legacy static links to point to working views
+  var prodHref = "{% url 'product_list' %}";
+  document.querySelectorAll('a[href="product-details.html"]').forEach(function(el){ el.setAttribute('href', prodHref); });
+  document.querySelectorAll('a[href$="product-details.html"]').forEach(function(el){ el.setAttribute('href', prodHref); });
+  var blogDetailsHref = "{% url 'blogdetails' %}";
+  document.querySelectorAll('a[href="blogdetails.html"]').forEach(function(el){ el.setAttribute('href', blogDetailsHref); });
+  // Make javascript:; anchors safe (no-op) but exclude Bootstrap triggers
+  document.querySelectorAll('a[href^="javascript:"]:not([data-bs-toggle]):not([data-bs-target])').forEach(function(el){
+    el.addEventListener('click', function(e){ e.preventDefault(); });
+  });
+});
+</script>
 </body>
-</html>    
+</html>

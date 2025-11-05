@@ -15,28 +15,80 @@ from decimal import Decimal
 # Create your views here.
 def home(request):
     """Home page view"""
-    return render(request,"app/home.html")
+    featured_products = Product.objects.all()[:6]  # Get first 6 products as featured
+    latest_products = Product.objects.order_by('-created_at')[:6]  # Get 6 most recent products
+    categories = Product.objects.values_list('category', flat=True).distinct()
+    return render(request, "app/home.html", {
+        'featured_products': featured_products,
+        'latest_products': latest_products,
+        'categories': categories
+    })
+
 def blog(request):
-    return render(request, "app/blog.html")
+    # TODO: Add blog model and fetch actual posts
+    blog_posts = [
+        {
+            'title': 'Introduction to Ayurveda',
+            'excerpt': 'Learn about the ancient healing system of Ayurveda...',
+            'date': '2023-11-01',
+        }
+    ]
+    return render(request, "app/blog.html", {'blog_posts': blog_posts})
+
 def forget_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        # TODO: Add password reset logic
+        messages.success(request, 'Password reset instructions have been sent to your email.')
+        return redirect('login')
     return render(request, "app/forget_password.html")
   
+@login_required
 def account_dashboard(request):
-    return render(request, "app/account_dashboard.html")
+    orders = Order.objects.filter(user=request.user).order_by('-order_id')
+    return render(request, "app/account_dashboard.html", {'orders': orders})
 
 def blogdetails(request):
-    return render(request, "app/blogdetails.html")
+    # TODO: Add blog detail model
+    blog_post = {
+        'title': 'Introduction to Ayurveda',
+        'content': 'Detailed content about Ayurveda...',
+        'date': '2023-11-01',
+    }
+    return render(request, "app/blogdetails.html", {'post': blog_post})
+
 def About_us(request):
     return render(request, "app/About_us.html")
+
+@login_required
 def wishlist(request):
-    return render(request, "app/wishlist.html")
+    wishlist_items = Wishlist.objects.filter(user=request.user)
+    return render(request, "app/wishlist.html", {'wishlist_items': wishlist_items})
+
 def contact_us(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        # TODO: Add email sending logic
+        messages.success(request, 'Your message has been sent successfully!')
+        return redirect('contact_us')
     return render(request, "app/contact_us.html")
 
 def product_list(request):
-     """Display all products"""
-     products = Product.objects.all()
-     return render(request, 'app/products.html', {'products': products})
+    """Display all products"""
+    all_products = Product.objects.all()
+    featured_products = all_products[:6]  # Get first 6 products as featured
+    latest_products = Product.objects.order_by('-created_at')[:6]  # Get 6 most recent products
+    categories = Product.objects.values_list('category', flat=True).distinct()
+    
+    return render(request, 'app/products.html', {
+        'products': all_products,
+        'featured_products': featured_products,
+        'latest_products': latest_products,
+        'categories': categories
+    })
 
 
 def product_detail(request, product_id):
@@ -47,9 +99,12 @@ def product_detail(request, product_id):
 def category_products(request, category_name):
     """Display products by category"""
     products = Product.objects.filter(category=category_name)
+    categories = Product.objects.values_list('category', flat=True).distinct()
+    
     context = {
         'products': products,
-        'category': category_name
+        'category': category_name,
+        'categories': categories
     }
     return render(request, 'app/category.html', context)
 
@@ -344,6 +399,19 @@ def register(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
+        terms = request.POST.get('terms')
+        
+        if not all([username, email, password, password2, terms]):
+            messages.error(request, 'All fields are required!')
+            return redirect('register')
+            
+        if not terms:
+            messages.error(request, 'You must agree to the Terms and Conditions!')
+            return redirect('register')
+            
+        if len(password) < 8:
+            messages.error(request, 'Password must be at least 8 characters long!')
+            return redirect('register')
         
         if password != password2:
             messages.error(request, 'Passwords do not match!')
@@ -357,7 +425,12 @@ def register(request):
             messages.error(request, 'Email already registered!')
             return redirect('register')
         
-        user = User.objects.create_user(username=username, email=email, password=password)
+        try:
+            user = User.objects.create_user(username=username, email=email, password=password)
+            messages.success(request, 'Registration successful! Please login.')
+            return redirect('user_login')
+        except Exception as e:
+            messages.error(request, 'An error occurred during registration. Please try again.')
         messages.success(request, 'Registration successful! Please login.')
         return redirect('user_login')
     

@@ -1,0 +1,12 @@
+{% load i18n %}
+
+{% if SOCIALACCOUNT_ENABLED %}
+<div class="mt-4">
+  <p class="text-center">
+    {% blocktrans %}Or sign in with your existing account:{% endblocktrans %}
+  </p>
+  <p class="text-center">
+    <a class="btn btn-outline-primary" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+  </p>
+</div>
+{% endif %}

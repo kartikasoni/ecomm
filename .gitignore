@@ -1,0 +1,30 @@
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+db.sqlite3
+*.sqlite3
+
+# Media / uploads
+media/
+
+# IDE/editor configs
+.vscode/
+.idea/
+
+# Distribution / build
+build/
+dist/
+*.egg-info/
+
+# OS files
+Thumbs.db
+.DS_Store
