@@ -181,3 +181,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# Updated for django-allauth 0.61+
+ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
+ACCOUNT_EMAIL_VERIFICATION = "none"   # or "optional" / "mandatory"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"     # redirect after logout
+LOGIN_REDIRECT_URL = "/"              # redirect after login
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

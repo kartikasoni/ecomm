@@ -33,6 +33,8 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="{% static 'app/css/style.css' %}" />
   <link rel="stylesheet" href="{% static 'app/css/dark-theme.css' %}" />
+  <link rel="stylesheet" href="{% static 'app/css/product-cards.css' %}" />
+  <link rel="stylesheet" href="{% static 'app/css/featured-products.css' %}" />
 
   <title>Herbal products | {% block title %}{% endblock title %}</title>
 </head>
@@ -41,7 +43,7 @@
   <!--start top header-->
   <header class="top-header">
     <nav class="navbar navbar-expand-xl w-100 navbar-dark container">
-    <a class="navbar-brand d-none d-xl-inline" href="{% url 'home' %}"><img src="{% static 'app/images/ayurveda_img/logo_icon.jpg' %}" width="60"
+    <a class="navbar-brand d-none d-xl-inline" href="{% url 'home' %}"><img src="{% static 'app/images/ayurveda_img/logo.jpg' %}" width="60"
           alt=""></a>
       <a class="mobile-menu-btn d-inline d-xl-none" href="javascript:;" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasNavbar">
@@ -49,7 +51,7 @@
       </a>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
-          <div class="offcanvas-logo"><img src="{% static 'app/images/ayurveda_img/logo_icon.jpg' %}" width="60" alt="">
+          <div class="offcanvas-logo"><img src="{% static 'app/images/ayurveda_img/logo.jpg' %}" width="60" alt="">
           </div>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -95,12 +97,7 @@
         </ul>
       </div>
 
-      <!-- Promo Banner -->
-       <div class="col-12 col-xl-4 d-none d-xl-block">
-        <div class="pramotion-banner1">
-          <img src="assets/images/ayurveda_img/pexels-n-voitkevich-7526013.jpg" class="img-fluid rounded" alt="Ayurveda Wellness" />
-        </div>
-      </div>
+      
 
     </div>
   </div>
@@ -168,7 +165,7 @@
         </li>
         <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
           <a class="nav-link position-relative" href="javascript:;">
-            <div class="cart-badge">8</div>
+            
             <i class="bi bi-basket2"></i>
           </a>
         </li>

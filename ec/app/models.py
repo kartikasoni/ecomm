@@ -20,21 +20,25 @@ from decimal import Decimal
 # Create your models here.
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    description = models.TextField()
+    name = models.CharField(max_length=100, verbose_name='Product Name')
+    description = models.TextField(help_text='Detailed description of the product')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField(default=0)
     category = models.CharField(max_length=100)
-   # category = models.CharField(choices= CATEGORY_CHOICES,max_length=50)
-    #image_url = models.CharField(max_length=255)
-    image_url = models.ImageField(upload_to='product_images/', blank=True, null=True)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+    image_url = models.ImageField(upload_to='product_images/', blank=True, null=True, verbose_name='Product Image')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        managed = False  # ✅ Important: Django won't try to recreate these tables
         db_table = 'products'
         
+    def __str__(self):
+        return self.name
+        
+    def get_image_url(self):
+        if self.image_url:
+            return self.image_url.url
+        return None
 
 
 # Cart Model

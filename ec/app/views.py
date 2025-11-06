@@ -15,14 +15,17 @@ from decimal import Decimal
 # Create your views here.
 def home(request):
     """Home page view"""
-    featured_products = Product.objects.all()[:6]  # Get first 6 products as featured
-    latest_products = Product.objects.order_by('-created_at')[:6]  # Get 6 most recent products
+    products = Product.objects.all()
+    featured_products = products.order_by('-created_at')[:5]  # Get 5 newest products as featured
+    latest_products = products.order_by('-created_at')[:6]  # Get 6 most recent products
     categories = Product.objects.values_list('category', flat=True).distinct()
-    return render(request, "app/home.html", {
+    
+    context = {
         'featured_products': featured_products,
         'latest_products': latest_products,
         'categories': categories
-    })
+    }
+    return render(request, "app/home.html", context)
 
 def blog(request):
     # TODO: Add blog model and fetch actual posts
