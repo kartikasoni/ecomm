@@ -140,13 +140,24 @@
           {% endfor %}
           <div class="card">
             <div class="position-relative overflow-hidden">
-              <div
-                class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
+              <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+
+  <!-- ❤️ Add to Wishlist -->
+  <a href="{% url 'add_to_wishlist' 1 %}">
+    <i class="bi bi-heart"></i>
+  </a>
+
+  <!-- 🛒 Add to Cart -->
+  <a href="{% url 'add_to_cart' 1 %}">
+    <i class="bi bi-basket3"></i>
+  </a>
+
+  <!-- 🔍 View Product -->
+  <a href="{% url 'product_detail' 1 %}">
+    <i class="bi bi-zoom-in"></i>
+  </a>
+</div>
+
               <a href="{% url 'product_list' %}">
                 <img src="{% static 'app/images/ayurveda_img/Triphala Powder.jpg' %}" class="card-img-top" alt="...">
               </a>
@@ -167,13 +178,23 @@
           </div>
           <div class="card">
             <div class="position-relative overflow-hidden">
-                <div
-                class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
+                <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+
+  <!-- ❤️ Add to Wishlist -->
+  <a href="{% url 'add_to_wishlist' 1 %}">
+    <i class="bi bi-heart"></i>
+  </a>
+
+  <!-- 🛒 Add to Cart -->
+  <a href="{% url 'add_to_cart' 1 %}">
+    <i class="bi bi-basket3"></i>
+  </a>
+
+  <!-- 🔍 View Product -->
+  <a href="{% url 'product_detail' 1 %}">
+    <i class="bi bi-zoom-in"></i>
+  </a>
+</div>
               <a href="{% url 'product_list' %}">
                 <img src="{% static 'app/images/ayurveda_img/tulsi green tea.jpg' %}" class="card-img-top" alt="...">
               </a>
@@ -194,13 +215,23 @@
           </div>
           <div class="card">
             <div class="position-relative overflow-hidden">
-              <div
-                class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
+             <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+
+  <!-- ❤️ Add to Wishlist -->
+  <a href="{% url 'add_to_wishlist' 1 %}">
+    <i class="bi bi-heart"></i>
+  </a>
+
+  <!-- 🛒 Add to Cart -->
+  <a href="{% url 'add_to_cart' 1 %}">
+    <i class="bi bi-basket3"></i>
+  </a>
+
+  <!-- 🔍 View Product -->
+  <a href="{% url 'product_detail' 1 %}">
+    <i class="bi bi-zoom-in"></i>
+  </a>
+</div>
               <a href="{% url 'product_list' %}">
                 <img src="{% static 'app/images/ayurveda_img/Lemongrass.jpg' %}" class="card-img-top" alt="...">
               </a>
@@ -221,13 +252,23 @@
           </div>
           <div class="card">
             <div class="position-relative overflow-hidden">
-              <div
-                class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
+             <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+
+  <!-- ❤️ Add to Wishlist -->
+  <a href="{% url 'add_to_wishlist' 1 %}">
+    <i class="bi bi-heart"></i>
+  </a>
+
+  <!-- 🛒 Add to Cart -->
+  <a href="{% url 'add_to_cart' 1 %}">
+    <i class="bi bi-basket3"></i>
+  </a>
+
+  <!-- 🔍 View Product -->
+  <a href="{% url 'product_detail' 1 %}">
+    <i class="bi bi-zoom-in"></i>
+  </a>
+</div>
               <a href="{% url 'product_list' %}">
                 <img src="{% static 'app/images/ayurveda_img/facepack.jpg' %}" class="card-img-top" alt="...">
               </a>
@@ -331,12 +372,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-nay-nyo-727253247-18680598.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/acidity juice.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Acidity Juice</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -360,12 +401,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-nay-nyo-727253247-18680598.jpg' %}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/aloe facewash.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Aloe Facewash</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -389,12 +430,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-nay-nyo-727253247-18680598.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/neem capsules.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Neem Capsules</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -418,12 +459,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-nay-nyo-727253247-18680598.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">goumbik</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -447,12 +488,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img//pexels-goumbik-298720.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/Aloe Vera Gel.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Aloe Vera Gel</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -476,12 +517,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img//pexels-goumbik-298720.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/amla juice.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Amla Juice</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -505,12 +546,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img//pexels-goumbik-298720.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/ashvagandha.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Ashvagandha</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -534,12 +575,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img//pexels-goumbik-298720.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/Triphala Powder.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Triphala Powder</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -563,12 +604,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img//pexels-goumbik-298720.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/tulsi green tea.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Tulsi Green Tea</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -596,12 +637,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img//pexels-goumbik-298720.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/Turmeric Curcumin ..jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Turmeric Curcumin</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -625,12 +666,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/Natural Shatavari _ Asparagus Racemosus Powder for Radiant Skin, Hair and Health Care.jpg '%}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Shatavari</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -654,12 +695,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="assets/images/ayurveda_img/pexels-goumbik-298720.jpg" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/SheCare_1.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">SheCare</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -684,12 +725,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/pexels-vicky-3273989.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Syndrona</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -713,12 +754,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-n-voitkevich-7526013.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/pexels-tranmautritam-92327.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Ashwagandha</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -746,12 +787,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-n-voitkevich-7526013.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/pexels-souranshi-fashion-and-lifestyle-magazine-2959920-7148531.jpg '%}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Herbs</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -775,12 +816,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-n-voitkevich-7526013.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/herbal tea.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Herbal Tea</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -810,7 +851,7 @@
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Diabetic Care</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -834,12 +875,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/DiabicCare_WhiteBG.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/pexels-galiiya-20689437.jpg '%}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Herbal care</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -863,12 +904,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/DiabicCare_WhiteBG.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/pexels-mareefe-1638280.jpg '%}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Healthy tea</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -896,12 +937,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/DiabicCare_WhiteBG.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/pexels-n-voitkevich-7526061.jpg '%}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Healthy herbs</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -925,12 +966,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/DiabicCare_WhiteBG.jpg '%}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/pexels-fecundap6-2178565.jpg '%}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Herbs</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -960,7 +1001,7 @@
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Digestive care</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -984,12 +1025,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-anna-pou-8329337.jpg' %}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/pexels-valentin-ivantsov-2154772556-34525474.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Herbal Mint</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -1013,12 +1054,12 @@
                           class="bi bi-zoom-in"></i></a>
                     </div>
                     <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-anna-pou-8329337.jpg' %}" class="card-img-top-products" alt="...">
+                      <img src="{% static 'app/images/ayurveda_img/Thyro_1.jpg' %}" class="card-img-top-products" alt="...">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
+                      <h6 class="mb-1 fw-bold product-name">Thyroid Support</h6>
                       <div class="ratings mb-1 h6">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>
@@ -1145,7 +1186,7 @@
                   <img src="{% static 'app/images/ayurveda_img/pexels-anna-pou-8329337.jpg' %}" class="card-img-top-products rounded-0" alt="...">
                 </div>
                 <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Product Name</h5>
+                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Digestive care</h5>
                   <h6 class="mb-0 product-number fw-bold">856 Products</h6>
                 </div>
               </div>
@@ -1157,7 +1198,7 @@
                 <div class="overflow-hidden">
                  <img src="{% static 'app/images/ayurveda_img/DiabicCare_WhiteBG.jpg' %}" class="card-img-top-products rounded-0" alt="...">                </div>
                 <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Product Name</h5>
+                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Diabetic care</h5>
                   <h6 class="mb-0 product-number fw-bold">169 Products</h6>
                 </div>
               </div>
@@ -1167,9 +1208,9 @@
             <div class="card">
               <div class="card-body">
                 <div class="overflow-hidden">
-                <img src="{% static 'app/images/ayurveda_img/pexels-anna-pou-8329337.jpg' %}" class="card-img-top-products rounded-0" alt="... ">                </div>
+                <img src="{% static 'app/images/ayurveda_img/ashvagandha.jpg' %}" class="card-img-top-products rounded-0" alt="... ">                </div>
                 <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Product Name</h5>
+                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Ashvagandha</h5>
                   <h6 class="mb-0 product-number fw-bold">589 Products</h6>
                 </div>
               </div>
@@ -1179,9 +1220,9 @@
             <div class="card">
               <div class="card-body">
                 <div class="overflow-hidden">
-                 <img src="{% static 'app/images/ayurveda_img/DiabicCare_WhiteBG.jpg' %}" class="card-img-top-products rounded-0" alt="...">                </div>
+                 <img src="{% static 'app/images/ayurveda_img/brown sugar.jpg' %}" class="card-img-top-products rounded-0" alt="...">                </div>
                 <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Product Name</h5>
+                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Brown Sugar</h5>
                   <h6 class="mb-0 product-number fw-bold">278 Products</h6>
                 </div>
               </div>
@@ -1191,9 +1232,9 @@
             <div class="card">
               <div class="card-body">
                 <div class="overflow-hidden">
-                    <img src="{% static 'app/images/ayurveda_img/pexels-anna-pou-8329337.jpg' %}" class="card-img-top-products rounded-0" alt="...">                </div>
+                    <img src="{% static 'app/images/ayurveda_img/tulsi green tea.jpg' %}" class="card-img-top-products rounded-0" alt="...">                </div>
                 <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Product Name</h5>
+                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Tulsi Green Tea</h5>
                   <h6 class="mb-0 product-number fw-bold">985 Products</h6>
                 </div>
               </div>
@@ -1203,10 +1244,10 @@
             <div class="card">
               <div class="card-body">
                 <div class="overflow-hidden">
-                  <img src="{% static 'app/images/ayurveda_img/DiabicCare_WhiteBG.jpg' %}" class="card-img-top-products rounded-0" alt="...">
+                  <img src="{% static 'app/images/ayurveda_img/Turmeric Curcumin ..jpg' %}" class="card-img-top-products rounded-0" alt="...">
                 </div>
                 <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Product Name</h5>
+                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Turmeric Curcumin</h5>
                   <h6 class="mb-0 product-number fw-bold">489 Products</h6>
                 </div>
               </div>
