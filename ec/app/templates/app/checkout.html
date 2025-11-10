@@ -32,103 +32,107 @@
          <div class="col-12 col-lg-8 col-xl-8">
         <h6 class="fw-bold mb-3 py-2 px-3 bg-light">Personal Details</h6>
         <!-- Address / payment form -->
-            <form method="post" action="{% url 'place_order' %}">
-                  {% csrf_token %}
-        <div class="card rounded-0 mb-3">
-			  <div class="card-body">
-			    <div class="row g-3">
-             <div class="col-12 col-lg-6">
-              <div class="form-floating">
-                <input type="text" class="form-control rounded-0" id="floatingFirstName" placeholder="First Name" required>
-                <label for="floatingFirstName">First Name</label>
-              </div>
-              </div>
-               <div class="col-12 col-lg-6">
-              <div class="form-floating">
-                <input type="text" class="form-control rounded-0" id="floatingFirstName" placeholder="Last Name" required>
-                <label for="floatingFirstName">Last Name</label>
-              </div>
-              </div>
- <div class="col-12 col-lg-6">
-              <div class="form-floating">
-                <input type="text" class="form-control rounded-0" id="floatingEmail" placeholder="Email" value="{{ user.email }}" required>>
-                <label for="floatingEmail">Email</label>
-              </div>
-             </div>
-                 
-            <div class="col-12 col-lg-6">
-              <div class="form-floating">
-                <input type="text" class="form-control rounded-0" id="floatingMobileNo" placeholder="Mobile No"required>
-                <label for="floatingMobileNo">Mobile No</label>
-              </div>
-             </div>
-                   </div>
-                   </div>
-                   </div>   
-
-                    <h6 class="fw-bold mb-3 py-2 px-3 bg-light">Shipping Details</h6>
-		    <div class="card rounded-0">
-			  <div class="card-body">
-          <div class="row g-3">
-            <div class="col-12 col-lg-12">
-             <div class="form-floating">
-               <input type="text" class="form-control rounded-0" id="floatingStreetAddress" placeholder="Street Address" required>
-               <label for="floatingStreetAddress">Street Address</label>
-             </div>
-            </div>
-            <div class="col-12 col-lg-4">
-             <div class="form-floating">
-               <input type="text" class="form-control rounded-0" id="floatingZipCode" placeholder="Zip Code" required>
-               <label for="floatingZipCode">Zip Code</label>
-             </div>
-            </div>
-            <div class="col-12 col-lg-4">
-             <div class="form-floating">
-               <input type="text" class="form-control rounded-0" id="floatingCity" placeholder="City" required>
-               <label for="floatingCity">City</label>
-             </div>
-            </div>
-            <div class="col-12 col-lg-4">
-             <div class="form-floating">
-               <input type="text" class="form-control rounded-0" id="floatingCountry" placeholder="Country" required>
-               <label for="floatingCountry">Country</label>
-             </div>
-            </div>
-         </div><!--end row-->
-			  </div>
-			</div> 
-
-                    <div class="col-12">
-                        <label class="form-label">Payment Method</label>
-                        <select class="form-select" name="payment_method" required>
-                            <option value="cod">Cash on Delivery</option>
-                            <option value="online">Online Payment</option>
-                        </select>
-                    </div>
+        <form method="post" action="{% url 'place_order' %}" class="needs-validation" novalidate>
+          {% csrf_token %}
+          <div class="card rounded-0 mb-3">
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control rounded-0" name="full_name" id="floatingFullName" placeholder="Full Name" value="{{ user.get_full_name }}" required>
+                    <label for="floatingFullName">Full Name</label>
+                  </div>
                 </div>
+                <div class="col-12 col-lg-6">
+                  <div class="form-floating">
+                    <input type="email" class="form-control rounded-0" name="email" id="floatingEmail" placeholder="Email" value="{{ user.email }}" required>
+                    <label for="floatingEmail">Email</label>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control rounded-0" name="phone" id="floatingMobileNo" placeholder="Mobile No" value="{{ user.profile.phone|default:user.username }}" required>
+                    <label for="floatingMobileNo">Mobile No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                <button class="btn btn-success mt-3" type="submit">Place Order</button>
-            </form>
+          <h6 class="fw-bold mb-3 py-2 px-3 bg-light">Shipping Details</h6>
+          <div class="card rounded-0 mb-3">
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control rounded-0" name="address" id="floatingStreetAddress" placeholder="Street Address" required>
+                    <label for="floatingStreetAddress">Street Address</label>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                  <div class="form-floating">
+                    <input type="text" class="form-control rounded-0" name="pincode" id="floatingZipCode" placeholder="Zip Code" required>
+                    <label for="floatingZipCode">Zip Code</label>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                  <div class="form-floating">
+                    <input type="text" class="form-control rounded-0" name="city" id="floatingCity" placeholder="City" required>
+                    <label for="floatingCity">City</label>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                  <div class="form-floating">
+                    <input type="text" class="form-control rounded-0" name="state" id="floatingState" placeholder="State" required>
+                    <label for="floatingState">State</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Payment Method</label>
+            <select class="form-select" name="payment_method" required>
+              <option value="cod">Cash on Delivery</option>
+              <option value="online">Online Payment</option>
+            </select>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-success px-4" type="submit">Place Order</button>
+          </div>
+        </form>
         </div>
 
         <!-- Summary -->
-        <div class="col-lg-5 mt-4 mt-lg-0">
-            <div class="card">
-                <div class="card-header">Order Summary</div>
-                <div class="card-body">
-                    {% for item in cart_items %}
-                        <div class="d-flex justify-content-between">
-                            <div>{{ item.product.name }} × {{ item.quantity }}</div>
-                            <div>₹ {{ item.subtotal }}</div>
-                        </div>
-                    {% endfor %}
-                    <hr>
-                    <div class="d-flex justify-content-between fw-bold">
-                        <div>Total</div>
-                        <div>₹ {{ total }}</div>
-                    </div>
+        <div class="col-lg-4 offset-lg-0 mt-4 mt-lg-0">
+          <div class="card shadow-sm border-0">
+            <div class="card-header bg-white fw-bold">Order Summary</div>
+            <div class="card-body">
+              {% for item in cart_items %}
+                <div class="d-flex align-items-center mb-2">
+                  <div class="me-2">
+                    {% if item.product.image_url %}
+                      <img src="{{ item.product.image_url.url }}" width="48" height="48" style="object-fit:cover;" class="rounded border" alt="{{ item.product.name }}">
+                    {% else %}
+                      <img src="{% static 'app/images/no-image.png' %}" width="48" height="48" style="object-fit:cover;" class="rounded border" alt="No image">
+                    {% endif %}
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold small">{{ item.product.name }}</div>
+                    <div class="text-muted small">Qty: {{ item.quantity }}</div>
+                  </div>
+                  <div class="fw-bold">₹ {{ item.subtotal }}</div>
                 </div>
+              {% endfor %}
+              <hr>
+              <div class="d-flex justify-content-between fw-bold">
+                <div>Total</div>
+                <div>₹ {{ total }}</div>
+              </div>
             </div>
+          </div>
         </div>
     </div>
     {% else %}

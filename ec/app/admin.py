@@ -1,7 +1,18 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
-from .models import Product, Cart, Wishlist, Order, OrderItem
+from .models import Product, Cart, Wishlist, Order, OrderItem, Blog
+
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'category', 'date', 'edit_link')
+    list_filter = ('category',)
+    search_fields = ('title', 'author', 'summary', 'content')
+
+    def edit_link(self, obj):
+        url = reverse('admin:app_blog_change', args=[obj.pk])
+        return format_html(f'<a class="button" href="{url}">Edit</a>')
+    edit_link.short_description = 'Edit Blog'
 
 @admin.register(Product)
 class ProductModelAdmin(admin.ModelAdmin):

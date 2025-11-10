@@ -37,6 +37,27 @@
   <link rel="stylesheet" href="{% static 'app/css/featured-products.css' %}" />
 
   <title>Herbal products | {% block title %}{% endblock title %}</title>
+<style>
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  main, .main-content, #content, .page-content, .container.py-5 {
+    flex: 1 0 auto;
+  }
+  .footer-section {
+    margin-top: auto;
+    width: 100%;
+  }
+  .footer-strip {
+    margin-top: 0;
+    width: 100%;
+    position: relative;
+    left: 0;
+    bottom: 0;
+  }
+</style>
 </head>
 
 
@@ -60,48 +81,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
-          <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
-    Categories
-  </a>
-  <div class="dropdown-menu dropdown-large-menu">
-    <div class="row">
-
-      <!-- Wellness Category -->
-          <div class="col-12 col-xl-4">
-        <h6 class="large-menu-title">Wellness Care</h6>
-        <ul class="list-unstyled">
-          <li><a href="{% url 'product_list' %}">Women’s Wellness</a></li>
-          <li><a href="{% url 'product_list' %}">Men’s Wellness</a></li>
-          <li><a href="{% url 'product_list' %}">Immunity Booster</a></li>
-          <li><a href="{% url 'product_list' %}">Digestive Health</a></li>
-          <li><a href="{% url 'product_list' %}">Liver Care</a></li>
-          <li><a href="{% url 'product_list' %}">Diabetic Care</a></li>
-          <li><a href="{% url 'product_list' %}">Heart & Cholesterol </a></li>
-          <li><a href="{% url 'product_list' %}">Joint & Pain Relief</a></li>
-        </ul>
-      </div>
-
-      <!-- Product Types -->
-      <div class="col-12 col-xl-4">
-        <h6 class="large-menu-title">Product Types</h6>
-        <ul class="list-unstyled">
-          <li><a href="{% url 'product_list' %}">Herbal Juices</a></li>
-          <li><a href="{% url 'product_list' %}">Churna & Powders</a></li>
-          <li><a href="{% url 'product_list' %}">Tablets & Capsules</a></li>
-          <li><a href="{% url 'product_list' %}">Herbal Oils</a></li>
-          <li><a href="{% url 'product_list' %}">Aloe Vera Products</a></li>
-          <li><a href="{% url 'product_list' %}">Skin Care</a></li>
-          <li><a href="{% url 'product_list' %}">Hair Care</a></li>
-          <li><a href="{% url 'product_list' %}">Body Detox</a></li>
-        </ul>
-      </div>
-
-      
-
-    </div>
-  </div>
-</li>
+         
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
@@ -111,9 +91,7 @@
                 <li><a class="dropdown-item" href="{% url 'cart_view' %}">Shop Cart</a></li>
                 <li><a class="dropdown-item" href="{% url 'wishlist_view' %}">Wishlist</a></li>
                 <li><a class="dropdown-item" href="{% url 'product_list' %}">Product Details</a></li>
-                <li><a class="dropdown-item" href="{% url 'checkout' %}">Payment Method</a></li>
-                <li><a class="dropdown-item" href="{% url 'account_dashboard' %}">Billing Details</a></li>
-                <li><a class="dropdown-item" href="{% url 'account_dashboard' %}">Addresses</a></li>
+                <li><a class="dropdown-item" href="{% url 'checkout' %}">Billing details</a></li>
                 <li><a class="dropdown-item" href="{% url 'product_list' %}">Categories</a></li>
               </ul>
             </li>
@@ -164,9 +142,22 @@
           <a class="nav-link" href="{% url 'wishlist_view' %}"><i class="bi bi-suit-heart"></i></a>
         </li>
         <li class="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
-          <a class="nav-link position-relative" href="javascript:;">
-            
+          <a class="nav-link position-relative" href="#offcanvasRight" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasRight">
             <i class="bi bi-basket2"></i>
+            {% if cart_items and cart_items|length > 0 %}
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.7rem;">
+                {{ cart_items|length }}
+                <span class="visually-hidden">cart items</span>
+              </span>
+            {% endif %}
+          </a>
+
+<!-- Bootstrap JS Bundle (required for offcanvas, dropdown, etc.) -->
+<script src="{% static 'app/js/bootstrap.bundle.min.js' %}"></script>
+<!-- jQuery (if needed by your main.js) -->
+<script src="{% static 'app/js/jquery.min.js' %}"></script>
+<!-- Main custom JS (for theme toggling, etc.) -->
+<script src="{% static 'app/js/main.js' %}"></script>
           </a>
         </li>
         <li class="nav-item">
@@ -183,7 +174,7 @@
 
 
      <!--start footer-->
-  <section class="footer-section bg-section-2 section-padding">
+  <section class="footer-section bg-section-2 section-padding" style="margin-top:auto; width:100%;">
     <div class="container">
        <div class="row row-cols-1 row-cols-lg-4 g-4">
         <div class="col">
@@ -268,214 +259,44 @@
   </section>
   <!--end footer-->
 
-  <footer class="footer-strip text-center py-3 bg-section-2 border-top positon-absolute bottom-0">
+  <footer class="footer-strip text-center py-3 bg-section-2 border-top" style="margin-top:0;width:100%;position:relative;left:0;bottom:0;">
     <p class="mb-0 text-muted">© 2022. www.example.com | All rights reserved.</p>
   </footer>
  <!--start cart-->
 <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header bg-section-2"> 
-    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel">8 items in the cart</h5>
+    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel">
+      {% if cart_items %}{{ cart_items|length }} item{{ cart_items|length|pluralize }} in the cart{% else %}Cart is empty{% endif %}
+    </h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
       <div class="cart-list">
-
-        <div class="d-flex align-items-center gap-3">
+      {% if cart_items %}
+        {% for item in cart_items %}
+        <div class="d-flex align-items-center gap-3 mb-2">
           <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
+            <a href="{% url 'product_detail' item.product.product_id %}">
+              <img src="{{ item.product.image_url.url }}" width="60" alt="{{ item.product.name }}">
             </a>
           </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
+          <div>
+            <h6 class="mb-0 fw-light mb-1">{{ item.product.name }}</h6>
+            <p class="mb-0"><strong>{{ item.quantity }} x ₹{{ item.product.price }}</strong></p>
           </div>
           <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
+            <form method="post" action="{% url 'remove_from_cart' item.id %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="link-dark btn btn-link p-0" title="Remove"><i class="bi bi-trash"></i></button>
+            </form>
           </div>
         </div>
         <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
+        {% endfor %}
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <span class="fw-bold">Total:</span>
+          <span class="fw-bold">₹{{ total }}</span>
         </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="{% url 'product_list' %}">
-              <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="offcanvas-footer p-3 border-top">
-      <div class="d-grid">
-        <button type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Checkout</button>
-      </div>
-    </div>
-
-</div>
-<!--end cat-->
-    <!--Start Back To Top Button-->
-  <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
-  <!--End Back To Top Button-->
-
-
-  <!-- JavaScript files -->
-<script src="{% static 'app/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'app/js/jquery.min.js' %}"></script>
-<script src="{% static 'app/plugins/slick/slick.min.js' %}"></script>
-<script src="{% static 'app/js/main.js' %}"></script>
-<script src="{% static 'app/js/index.js' %}"></script>
-
-
-<!-- Custom JS -->
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  // Fix legacy static links to point to working views by anjali 
-  var prodHref = "{% url 'product_list' %}";
-  document.querySelectorAll('a[href="product-details.html"]').forEach(function(el){ el.setAttribute('href', prodHref); });
-  document.querySelectorAll('a[href$="product-details.html"]').forEach(function(el){ el.setAttribute('href', prodHref); });
-  var blogDetailsHref = "{% url 'blogdetails' %}";
-  document.querySelectorAll('a[href="blogdetails.html"]').forEach(function(el){ el.setAttribute('href', blogDetailsHref); });
-  // Make javascript:; anchors safe (no-op) but exclude Bootstrap triggers
-  document.querySelectorAll('a[href^="javascript:"]:not([data-bs-toggle]):not([data-bs-target])').forEach(function(el){
-    el.addEventListener('click', function(e){ e.preventDefault(); });
-  });
-});
-</script>
-</body>
-</html>
+      {% else %}
+        <div class="text-center text-muted py-4">Your cart is empty.</div>
+      {% endif %}

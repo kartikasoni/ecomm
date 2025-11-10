@@ -403,64 +403,60 @@
                 </div>
               </div>
 
-              <div class="product-grid">
-                {% for product in products %}
-                <div class="product-card">
-                  <div class="position-relative product-image-wrapper">
-                    {% if product.image_url %}
-                    <img src="{{ product.image_url.url }}" class="product-image" alt="{{ product.name }}">
-                    {% endif %}
-                    <div class="product-options">
-                      <a href="{% url 'add_to_wishlist' product.product_id %}" class="btn-product-action btn-wishlist">
-                        <i class="bi bi-heart"></i>
-                      </a>
-                      <a href="{% url 'add_to_cart' product.product_id %}" class="btn-product-action btn-cart">
-                        <i class="bi bi-basket3"></i>
-                      </a>
-                      <a href="{% url 'product_detail' product.product_id %}" class="btn-product-action btn-view">
-                        <i class="bi bi-eye"></i>
+              <div class="row g-4 mt-2">
+                <div class="product-grid">
+                  {% for product in products %}
+                  <div class="card">
+                    <div class="position-relative overflow-hidden">
+                      <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                        <a href="{% url 'add_to_wishlist' product.product_id %}"><i class="bi bi-heart"></i></a>
+                        <form method="post" action="{% url 'add_to_cart' product.product_id %}" style="display:inline;">
+                          {% csrf_token %}
+                          <input type="hidden" name="quantity" value="1">
+                          <button type="submit" style="background:none;border:none;padding:0;">
+                            <i class="bi bi-basket3"></i>
+                          </button>
+                        </form>
+                        <a href="{% url 'product_detail' product.product_id %}"><i class="bi bi-zoom-in"></i></a>
+                      </div>
+                      <a href="{% url 'product_detail' product.product_id %}">
+                        {% if product.image_url %}
+                          <img src="{{ product.image_url.url }}" class="card-img-top-products" alt="{{ product.name }}">
+                        {% else %}
+                          <img src="{% static 'app/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg' %}" class="card-img-top-products" alt="No image available">
+                        {% endif %}
                       </a>
                     </div>
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">{{ product.name }}</h3>
-                    <div class="ratings">
-                      <i class="bi bi-star-fill text-warning"></i>
-                      <i class="bi bi-star-fill text-warning"></i>
-                      <i class="bi bi-star-fill text-warning"></i>
-                      <i class="bi bi-star-fill text-warning"></i>
-                      <i class="bi bi-star-fill text-warning"></i>
+                    <div class="card-body">
+                      <div class="product-info text-center">
+                        <h6 class="mb-1 fw-bold product-name">{{ product.name }}</h6>
+                        <div class="ratings mb-1 h6">
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="mb-0 h6 fw-bold product-price">₹{{ product.price }}</p>
+                      </div>
                     </div>
-                    <p class="product-price">₹{{ product.price }}</p>
-                    <p class="product-description">{{ product.description|truncatewords:20 }}</p>
-                    {% if product.stock > 0 %}
-                      <span class="badge bg-success">In Stock</span>
-                    {% else %}
-                      <span class="badge bg-danger">Out of Stock</span>
-                    {% endif %}
                   </div>
+                  {% endfor %}
+                  {% if products|length == 0 %}
+                  <div class="col-12">
+                    <div class="alert alert-info text-center">
+                      <i class="bi bi-info-circle"></i> No products available in this category.
+                    </div>
+                  </div>
+                  {% endif %}
                 </div>
-                {% endfor %}
               </div>
-
-                    {% endif %}
-                 
-               <!-- Stock Status -->
-  {% if p.stock > 0 %}
-    <span class="badge bg-success mt-1">In Stock</span>
-  {% else %}
-    <span class="badge bg-danger mt-1">Out of Stock</span>
-  {% endif %}
-
-
               </div><!--end row-->
             </div>
-
             </div>
           </div>
-          </div>
-            </section>
-       </div><!--end row-->
+        </section>
+      </div><!--end row-->
    
 
    <!--start product details-->

@@ -4,422 +4,204 @@
 {% block title %}{{ product.name }}{% endblock title %}
 {% block main-content %}
 <!--start product details-->
-<div class="page-content">
-
-
-   <!--start breadcrumb-->
-   <div class="py-4 border-bottom">
-    <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0"> 
-          <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-          <li class="breadcrumb-item"><a href="javascript:;">Shop</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Page Details</li>
-        </ol>
-      </nav>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <div class="card shadow-lg border-0 rounded-4 p-4 product-detail-card">
+        <div class="row g-4 align-items-center">
+          <div class="col-12 col-md-5 text-center">
+            <div class="product-detail-img mx-auto mb-3">
+              {% if product.image_url %}
+                <img src="{{ product.image_url.url }}" alt="{{ product.name }}" class="img-fluid rounded-3 product-img-main">
+              {% else %}
+                <i class="fas fa-image fa-5x text-muted"></i>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-12 col-md-7">
+            <div class="product-title mb-2">{{ product.name }}</div>
+            <div class="product-meta mb-2">Category: <span>{{ product.category }}</span></div>
+            <div class="product-price mb-2">₹{{ product.price }}</div>
+            {% if product.stock > 0 %}
+              <span class="badge-instock mb-2">In Stock</span>
+            {% else %}
+              <span class="badge-outstock mb-2">Out of Stock</span>
+            {% endif %}
+            <div class="product-actions d-flex gap-3 mb-3">
+              <form method="post" action="{% url 'add_to_cart' product.product_id %}" class="flex-fill">
+                {% csrf_token %}
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" class="btn btn-success btn-ecomm w-100"><i class="bi bi-basket2"></i>Add to Cart</button>
+              </form>
+              <form method="post" action="{% url 'add_to_wishlist' product.product_id %}" class="flex-fill">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger btn-ecomm w-100"><i class="bi bi-suit-heart"></i>Wishlist</button>
+              </form>
+            </div>
+            <div class="product-desc mb-3">
+              <h5 class="fw-bold mb-2">Product Details</h5>
+              <div>{{ product.description|linebreaksbr|default:"No description available for this product." }}</div>
+            </div>
+            <ul class="product-info-list list-unstyled">
+              <li><strong>Product ID:</strong> #{{ product.product_id }}</li>
+              <li><strong>Stock:</strong> {{ product.stock }}</li>
+            </ul>
+            <a href="{% url 'product_list' %}" class="btn btn-secondary back-link mt-3"><i class="fas fa-arrow-left"></i>Back to Products</a>
+          </div>
+        </div>
+      </div>
     </div>
-   </div>
-   <!--end breadcrumb-->
-   <section class="py-4">
-    <div class="container">
-       <div class="row g-4">
-          <div class="col-12 col-xl-7">
-            <div class="product-images">
-                <div class="product-zoom-images">
-                  <div class="row row-cols-2 g-3">
-                    <div class="col">
-                     <div class="col">
-          {% if product.image_url %}
-           <div class="img-thumb-container overflow-hidden position-relative" data-fancybox="gallery" data-src="aassets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg">       
-            <img src="{{ product.image_url.url }}"
-                 class="card-img-top"
-                 alt="{{ product.name }}">
   </div>
-          {% else %}
-            <div class="d-flex align-items-center justify-content-center h-100">
-              <i class="fas fa-image fa-5x text-muted"></i>
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-     <div class="col-12 col-xl-5">
-            <div class="product-info">
-                 <h4 class="product-title fw-bold mb-1">{ product.name }</h4>
-                  <p class="mb-0">All the Lorem Ipsum generators on the Internet tend to repeat
-                    All the Lorem Ipsum generators on the Internet tend to repeat
-                  </p>
-          
-<div class="product-rating">
-                    <div class="hstack gap-2 border p-1 mt-3 width-content">
-                      <div><span class="rating-number">4.8</span><i class="bi bi-star-fill ms-1 text-warning"></i></div>
-                      <div class="vr"></div>
-                      <div>162 Ratings</div>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="product-price d-flex align-items-center gap-3">
-                     <div class="h4 fw-bold">$458</div>
-                     <div class="h5 fw-light text-muted text-decoration-line-through">$2089</div>
-                     <div class="h4 fw-bold text-danger">(70% off)</div>  
-                  </div>
-                  <p class="fw-bold mb-0 mt-1 text-success">inclusive of all taxes</p>
-
-                  <div class="more-colors mt-4">
-                    <h6 class="fw-bold mb-3">{{ product.category }}</h6>
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="">
-                        <a href="javascript:;">
-                          <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" width="65" alt="">
-                        </a>
-                      </div>
-                      <div class="">
-                        <a href="javascript:;">
-                          <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" width="65" alt="">
-                        </a>
-                      </div>
-                      <div class="">
-                        <a href="javascript:;">
-                          <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" width="65" alt="">
-                        </a>
-                      </div>
-                      <div class="">
-                        <a href="javascript:;">
-                          <img src="assets/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg" width="65" alt="">
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="size-chart mt-4">
-                    <h6 class="fw-bold mb-3">Select Quantity</h6>
-                    <div class="d-flex align-items-center gap-2 flex-wrap">
-                     <div class="">
-                       <button type="button">XS</button>
-                     </div>
-                     <div class="">
-                      <button type="button">S</button>
-                    </div>
-                     <div class="">
-                      <button type="button">M</button>
-                    </div>
-                    <div class="">
-                      <button type="button">L</button>
-                    </div>
-                    <div class="">
-                      <button type="button">XL</button>
-                    </div>
-                    <div class="">
-                      <button type="button">XXL</button>
-                    </div>
-                   </div>
-                  </div>
-                  <div class="cart-buttons mt-3">
-                    <div class="buttons d-flex flex-column flex-lg-row gap-3 mt-4">
-                      <a href="{% url 'add_to_cart' product.product_id %}" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 col-lg-6"><i class="bi bi-basket2 me-2"></i>Add to Bag</a>
-                      <a href="{% url 'add_to_wishlist' product.product_id %}" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i class="bi bi-suit-heart me-2"></i>Wishlist</a>
-                    </div>
-                  </div>
-                  <hr class="my-3">
-                  <div class="product-info">
-                    <h6 class="fw-bold mb-3">Product Details</h6>
-                    {{ product.description|default:"No description available for this product." }}
-                  </div>
-                    <h2 class="mb-4" style="color: #2d8659;">₹{{ product.price }}</h2>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
-
-     <div class="mt-3">
-                <label for="quantity" class="form-label fw-bold">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ product.stock }}" class="form-control w-25 d-inline-block">
-                <small class="text-muted ms-2">Max available: {{ product.stock }}</small>
-              </div>
-
-              <!-- ❌ Removed Add to Cart, Buy Now, and Wishlist buttons -->
-
-              <hr class="my-3">
-              <div class="product-info">
-                <h6 class="fw-bold mb-3">Product Details</h6>
-                {{ product.description|default:"No description available for this product." }}
-              </div>
-        </div>
-     </div>
-    </div>
-   </section>
-
-   <!-- Stock info -->
-   {% if product.stock > 0 %}
-     <p class="text-success fs-5">
-       <i class="fas fa-check-circle"></i> In Stock ({{ product.stock }} available)
-     </p>
-   {% else %}
-     <p class="text-danger fs-5">
-       <i class="fas fa-times-circle"></i> Out of Stock
-     </p>
-   {% endif %}
-
-   <!-- Product Info -->
-   <div class="card mt-4">
-     <div class="card-body">
-       <h6 class="card-title fw-bold">Product Information</h6>
-       <ul class="list-unstyled mb-0">
-         <li class="mb-2"><strong>Category:</strong> {{ product.category }}</li>
-         <li class="mb-2"><strong>Product ID:</strong> #{{ product.product_id }}</li>
-         <li class="mb-2">
-           <strong>Availability:</strong>
-           {% if product.stock > 0 %}
-             <span class="text-success">In Stock</span>
-           {% else %}
-             <span class="text-danger">Out of Stock</span>
-           {% endif %}
-         </li>
-       </ul>
-     </div>
-   </div>
-
-   <!-- Back Button -->
-   <div class="mt-4">
-     <a href="{% url 'product_list' %}" class="btn btn-secondary">
-       <i class="fas fa-arrow-left"></i> Back to Products
-     </a>
-   </div>
-
 </div>
-
-   <!--start product details-->
-  <section class="section-padding">
-    <div class="container">
-      <div class="separator pb-3">
-        <div class="line"></div>
-        <h3 class="mb-0 h3 fw-bold">Similar Products</h3>
-        <div class="line"></div>
-      </div>
-      <div class="similar-products">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-4">
-          <div class="col">
-            <a href="javascript:;">
-            <div class="card rounded-0">
-            <img src="{% static 'app/images/ayurveda_img/Triphala Powder.jpg' %}" class="card-img-top" alt="...">
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Triphala</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-            </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-            <div class="card rounded-0">
-                <img src="{% static 'app/images/ayurveda_img/facepack.jpg' %}" class="card-img-top" alt="...">
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Face Pack</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-            </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-            <div class="card rounded-0">
-              <img src="{% static 'app/images/ayurveda_img/giloy juice.jpg' %}" alt="" class="card-img-top rounded-0">
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Giloy Juice</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-            </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-            <div class="card rounded-0">
-              <img src="{% static 'app/images/ayurveda_img/pexels-andri-file-288172640-34534474.jpg' %}" alt="" class="card-img-top rounded-0">
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Syndrona</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-            </div>
-           </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-            <div class="card rounded-0">
-              <img src="{% static 'app/images/ayurveda_img/pexels-nora-brody-1241785370-23511128.jpg' %}" alt="" class="card-img-top rounded-0">
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Herbs</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-             </div>
-             </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-            <div class="card rounded-0">
-              <img src="{% static 'app/images/ayurveda_img/Thyro_1.jpg' %}" alt="" class="card-img-top rounded-0">
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Thyro</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-            </div>
-             </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-            <div class="card rounded-0">
-                <img src="{% static 'app/images/ayurveda_img/Dentent Peppermint Formula Herbal Dentent Toothpaste 100g X 2 Free Shipping.jpg' %}" class="card-img-top" alt="...">
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Dentent Toothpaste</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-            </div>
-           </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-            <div class="card rounded-0">
-                <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" class="card-img-top" alt="...">
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Herbal juice</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-            </div>
-           </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-            <div class="card rounded-0">
-                <img src="{% static 'app/images/ayurveda_img/pexels-rethaferguson-3621234 (1).jpg' %}" class="card-img-top" alt="...">
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Pepper</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-            </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-             <div class="card rounded-0">
-        <img src="{% static 'app/images/ayurveda_img/neem capsules.jpg' %}" class="card-img-top" alt="...">
-
-              <div class="card-body border-top">
-                <h5 class="mb-0 fw-bold product-short-title">Neem Capsules</h5>
-                <p class="mb-0 product-short-name">Ayurvedic Tips</p>
-                <div class="product-price d-flex align-items-center gap-3 mt-2">
-                  <div class="h6 fw-bold">$458</div>
-                  <div class="h6 fw-light text-muted text-decoration-line-through">$2089</div>
-                  <div class="h6 fw-bold text-danger">(70% off)</div>
-                </div>
-              </div>
-            </div>
-           </a>
-          </div>
-
-  
-        </div>
-        <!--end row-->
-      </div>
-    </div>
-  </section>
-  <!--end product details-->
-
-
-<!-- === JavaScript for Quantity & Form Sync === -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const qtyInput = document.getElementById('quantityInput');
-    const decBtn = document.getElementById('decreaseQty');
-    const incBtn = document.getElementById('increaseQty');
-    const maxQty = qtyInput ? parseInt(qtyInput.getAttribute('max')) : 1;
-
-    const cartQtyField = document.getElementById('cartQuantityField');
-    const buyNowQtyField = document.getElementById('buyNowQuantityField');
-
-    function syncHiddenFields() {
-      if (cartQtyField) cartQtyField.value = qtyInput.value;
-      if (buyNowQtyField) buyNowQtyField.value = qtyInput.value;
-    }
-
-    if (decBtn) {
-      decBtn.addEventListener('click', function() {
-        let current = parseInt(qtyInput.value) || 1;
-        if (current > 1) {
-          qtyInput.value = current - 1;
-          syncHiddenFields();
-        }
-      });
-    }
-
-    if (incBtn) {
-      incBtn.addEventListener('click', function() {
-        let current = parseInt(qtyInput.value) || 1;
-        if (current < maxQty) {
-          qtyInput.value = current + 1;
-          syncHiddenFields();
-        }
-      });
-    }
-
-    if (qtyInput) {
-      qtyInput.addEventListener('change', function() {
-        let current = parseInt(qtyInput.value);
-        if (isNaN(current) || current < 1) qtyInput.value = 1;
-        else if (current > maxQty) qtyInput.value = maxQty;
-        syncHiddenFields();
-      });
-    }
-
-    // Initial sync
-    syncHiddenFields();
-  });
-</script>
 {% endblock main-content %}
+
+
+        <style>
+        .product-detail-hero {
+          background: #fff;
+          border-radius: 18px;
+          box-shadow: 0 2px 16px 0 rgba(60,72,88,.10);
+          padding: 2.5rem 2rem;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+        }
+        .product-detail-img {
+          background: #f7f7f7;
+          border-radius: 12px;
+          padding: 1.2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 120px;
+          max-height: 140px;
+          width: 100%;
+          max-width: 140px;
+        }
+        .product-detail-img img {
+          max-width: 220px;
+          max-height: 220px;
+          object-fit: contain;
+          box-shadow: 0 2px 12px 0 rgba(60,72,88,.10);
+        }
+        .product-detail-info {
+          padding-left: 2rem;
+        }
+        .product-title {
+          font-size: 2.1rem;
+          font-weight: 700;
+          color: #2d8659;
+          margin-bottom: 0.5rem;
+        }
+        .product-meta {
+          color: #888;
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+        }
+        .product-price {
+          font-size: 2rem;
+          color: #1a7f37;
+          font-weight: 700;
+          margin-bottom: 1rem;
+        }
+        .badge-instock {
+          background: #e6f4ea;
+          color: #1a7f37;
+          font-weight: 600;
+          border-radius: 6px;
+          padding: 0.4em 1em;
+          margin-right: 0.5em;
+        }
+        .badge-outstock {
+          background: #fbeaea;
+          color: #d32f2f;
+          font-weight: 600;
+          border-radius: 6px;
+          padding: 0.4em 1em;
+          margin-right: 0.5em;
+        }
+        .product-actions {
+          margin-top: 1.5rem;
+          display: flex;
+          gap: 1rem;
+        }
+        .product-actions form {
+          display: inline;
+        }
+        .btn-ecomm {
+          font-size: 1.1rem;
+          padding: 0.7em 2em;
+          border-radius: 8px;
+          font-weight: 600;
+          transition: background 0.2s, color 0.2s;
+        }
+        .btn-ecomm i {
+          margin-right: 0.5em;
+        }
+        .product-desc {
+          margin-top: 2rem;
+          font-size: 1.1rem;
+          color: #444;
+          line-height: 1.7;
+        }
+        .product-info-list {
+          margin-top: 2rem;
+          background: #f8f9fa;
+          border-radius: 10px;
+          padding: 1.5rem 1rem;
+          font-size: 1rem;
+        }
+        .back-link {
+          margin-top: 2.5rem;
+          display: inline-block;
+        }
+        .back-link i {
+          margin-right: 0.5em;
+        }
+        @media (max-width: 991px) {
+          .product-detail-hero { flex-direction: column; padding: 1.5rem 0.5rem; }
+          .product-detail-info { padding-left: 0; margin-top: 2rem; }
+        }
+        </style>
+
+<div class="product-detail-hero mx-auto d-flex flex-wrap align-items-start justify-content-center" style="max-width: 950px; margin: 40px auto 60px auto;">
+  <div class="col-12 col-md-6 mb-4 mb-md-0" style="min-width:320px;">
+    <div class="product-detail-img">
+      {% if product.image_url %}
+        <img src="{{ product.image_url.url }}" alt="{{ product.name }}">
+      {% else %}
+        <i class="fas fa-image fa-5x text-muted"></i>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-12 col-md-6 product-detail-info" style="min-width:320px;">
+    <div class="product-title">{{ product.name }}</div>
+    <div class="product-meta">Category: <span>{{ product.category }}</span></div>
+    <div class="product-price">₹{{ product.price }}</div>
+    {% if product.stock > 0 %}
+      <span class="badge-instock">In Stock</span>
+    {% else %}
+      <span class="badge-outstock">Out of Stock</span>
+    {% endif %}
+    <div class="product-actions">
+      <form method="post" action="{% url 'add_to_cart' product.product_id %}">
+        {% csrf_token %}
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="btn btn-success btn-ecomm"><i class="bi bi-basket2"></i>Add to Cart</button>
+      </form>
+      <form method="post" action="{% url 'add_to_wishlist' product.product_id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger btn-ecomm"><i class="bi bi-suit-heart"></i>Wishlist</button>
+      </form>
+    </div>
+    <div class="product-desc">
+      <h5 class="fw-bold mb-2">Product Details</h5>
+      <div>{{ product.description|linebreaksbr|default:"No description available for this product." }}</div>
+    </div>
+    <ul class="product-info-list list-unstyled">
+      <li><strong>Product ID:</strong> #{{ product.product_id }}</li>
+      <li><strong>Stock:</strong> {{ product.stock }}</li>
+    </ul>
+    <a href="{% url 'product_list' %}" class="btn btn-secondary back-link"><i class="fas fa-arrow-left"></i>Back to Products</a>
+  </div>
+</div>
 

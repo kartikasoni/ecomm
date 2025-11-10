@@ -59,8 +59,14 @@
                 <div class="card border shadow-none h-100">
                   <div class="position-relative overflow-hidden">
                     <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                      <a href="{% url 'add_to_wishlist' product.product_id %}"><i class="bi bi-heart"></i></a>
+                      <form method="post" action="{% url 'add_to_cart' product.product_id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" style="background:none;border:none;padding:0;">
+                          <i class="bi bi-basket3"></i>
+                        </button>
+                      </form>
                       <a href="{% url 'product_detail' product.product_id %}"><i class="bi bi-zoom-in"></i></a>
                     </div>
 

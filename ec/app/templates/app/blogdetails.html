@@ -29,25 +29,21 @@
           <div class="col-12 col-xl-8">
             <div class="d-flex flex-column gap-4">
               <div class="card rounded-0 border">
-                <img src="{% static 'app/images/ayurveda_img/blog_image.jpg' %}" class="card-img-top rounded-0 mb-3" alt="...">
+                {% if post.image %}
+                  <img src="{{ post.image.url }}" class="card-img-top rounded-0 mb-3" alt="{{ post.title }}">
+                {% endif %}
                 <div class="card-body">
                   <div class="d-flex align-items-center gap-4">
                     <div class="posted-by">
-                      <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
-                    </div>
-                    <div class="posted-by">
-                      <p class="mb-0"><i class="bi bi-chat me-2"></i>18 Comments</p>
+                      <p class="mb-0"><i class="bi bi-person me-2"></i>{{ post.author }}</p>
                     </div>
                     <div class="posted-date">
-                      <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
-                     </div>
+                      <p class="mb-0"><i class="bi bi-calendar me-2"></i>{{ post.date }}</p>
+                    </div>
                   </div>
-                  <h4 class="card-title fw-bold mt-3">Embrace the Healing Power of Ayurveda</h4>
-                  <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                  <br>
-                  <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                  <p>Nullam non felis odio. Praesent aliquam magna est, nec volutpat quam aliquet non. Cras ut lobortis massa, a fringilla dolor. Quisque ornare est at felis consectetur mollis. Aliquam vitae metus et enim posuere ornare. Praesent sapien erat, pellentesque quis sollicitudin eget, imperdiet bibendum magna. Aenean sit amet odio est.</p>
-                
+                  <h4 class="card-title fw-bold mt-3">{{ post.title }}</h4>
+                  <p class="mb-2"><strong>Summary:</strong> {{ post.summary }}</p>
+                  <p class="mb-0"><strong>Content:</strong> {{ post.content }}</p>
                   <div class="d-flex align-items-center gap-3 py-3 border-top border-bottom">
                     <div class="">
                       <h5 class="mb-0 fw-bold">Share This Post</h5>
@@ -60,13 +56,6 @@
                          <a href="javascript:;"><i class="bi bi-youtube"></i></a>
                          <a href="javascript:;"><i class="bi bi-instagram"></i></a>
                        </div>
-                    </div>
-                  </div>
-                  <div class="author d-flex align-items-start gap-3 my-3">
-                    <img src="{% static 'app/images/avatars/01.jpg' %}" class="" alt="" width="80">
-                    <div class="">
-                      <h6 class="mb-0">Jhon Doe</h6>
-                      <p class="mb-0">Donec egestas metus non vehicula accumsan. Pellentesque sit amet tempor nibh. Mauris in risus lorem. Cras malesuada gravida massa eget viverra.</p>
                     </div>
                   </div>
                   <hr>
@@ -115,53 +104,8 @@
                     <a href="javascript:;" class="list-group-item bg-transparent"><i class="bi bi-chevron-right me-1"></i> Ayurvedic Tips</a>
                   </div>
                 </div>
-                <div class="blog-categories recent-post mb-4">
-                  <h5 class="mb-4 fw-bold">Recent Posts</h5>
-                  <div class="d-flex align-items-start">
-                    <img src="{% static 'app/images/ayurveda_img/blog_image.jpg' %}" width="100" alt="">
-                    <div class="ms-3"> <a href="javascript:;" class="fs-6 fw-bold text-content">Embrace the Healing Power of Ayurveda</a>
-                      <p class="mb-0">March 15, 2021</p>
-                    </div>
-                  </div>
-                  <div class="my-3 border-bottom"></div>
-                  <div class="d-flex align-items-start">
-                    <img src="{% static 'app/images/ayurveda_img/blog_image.jpg' %}" width="100" alt="">
-                    <div class="ms-3"> <a href="javascript:;" class="fs-6 fw-bold text-content">Embrace the Healing Power of Ayurveda</a>
-                      <p class="mb-0">March 15, 2021</p>
-                    </div>
-                  </div>
-                  <div class="my-3 border-bottom"></div>
-                  <div class="d-flex align-items-start">
-                    <img src="{% static 'app/images/ayurveda_img/blog_image.jpg' %}" width="100" alt="">
-                    <div class="ms-3"> <a href="javascript:;" class="fs-6 fw-bold text-content">Embrace the Healing Power of Ayurveda</a>
-                      <p class="mb-0">March 15, 2021</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="blog-categories">
-                  <h5 class="mb-4 fw-bold">Top Categories</h5>
-                  <div class="tags-box d-flex flex-wrap gap-3">
-                    <div>
-                      <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Women’s Wellness</a>
-                    </div>
-                    <div>
-                      <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Skin Wellness</a>
-                    </div>
-                    <div>
-                      <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Pain Reliever</a>
-                    </div>
-                    <div>
-                      <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Immunity Wellness</a>
-                    </div>
-                    <div>
-                      <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Diabetic Wellness</a>
-                    </div>
-                    <div>
-                      <a href="javascript:;" class="btn btn-outline-dark rounded-0 btn-ecomm">Blood Purifier</a>
-                    </div>
-                  
-                  </div>
-                </div>
+             
+               
               </form>
             </div>
           </div>
@@ -173,183 +117,7 @@
 
  </div>
  
-<!--start cart-->
-<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header bg-section-2"> 
-    <h5 class="mb-0 fw-bold" id="offcanvasRightLabel">8 items in the cart</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-      <div class="cart-list">
 
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center gap-3">
-          <div class="bottom-product-img">
-            <a href="product-details.html">
-              <img src="assets/images/ayurveda_img/pexels-mareefe-1638280.jpg" width="60" alt="">
-            </a>
-          </div>
-          <div class="">
-            <h6 class="mb-0 fw-light mb-1">Product Name</h6>
-            <p class="mb-0"><strong>1 X $59.00</strong>
-            </p>
-          </div>
-          <div class="ms-auto fs-5">
-            <a href="javascript:" class="link-dark"><i class="bi bi-trash"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="offcanvas-footer p-3 border-top">
-      <div class="d-grid">
-        <button type="button" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Checkout</button>
-      </div>
-    </div>
-
-</div>
 {% endblock main-content %}
 <!--end cart-->
 

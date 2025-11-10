@@ -42,7 +42,7 @@
                     <tr>
                         <th>Product</th>
                         <th>Price</th>
-                        <th width="160">Quantity</th>
+                        <th width="120">Quantity</th>
                         <th>Subtotal</th>
                         <th></th>
                     </tr>
@@ -50,38 +50,29 @@
                 <tbody>
                     {% for item in cart_items %}
                         <tr>
-                            <td>
-                                <a href="{% url 'product_detail' item.product.product_id %}">
-                                    {{ item.product.name }}
-                                </a>
-                                <div class="small text-muted">{{ item.product.category }}</div>
+                            <td class="d-flex align-items-center gap-2">
+                                {% if item.product.image_url %}
+                                  <img src="{{ item.product.image_url.url }}" width="48" height="48" style="object-fit:cover;" class="rounded border" alt="{{ item.product.name }}">
+                                {% else %}
+                                  <img src="{% static 'app/images/no-image.png' %}" width="48" height="48" style="object-fit:cover;" class="rounded border" alt="No image">
+                                {% endif %}
+                                <div>
+                                  <a href="{% url 'product_detail' item.product.product_id %}" class="fw-semibold">{{ item.product.name }}</a>
+                                  <div class="small text-muted">{{ item.product.category }}</div>
+                                </div>
                             </td>
-
                             <td>₹ {{ item.product.price }}</td>
-
                             <td>
                                 <form class="d-flex" method="post" action="{% url 'update_cart' item.id %}">
                                     {% csrf_token %}
-                                    <input type="number"
-                                           name="quantity"
-                                           value="{{ item.quantity }}"
-                                           min="0"
-                                           class="form-control form-control-sm me-2"
-                                           style="max-width:70px;">
+                                    <input type="number" name="quantity" value="{{ item.quantity }}" min="0" class="form-control form-control-sm me-2" style="max-width:60px;">
                                     <button class="btn btn-sm btn-outline-primary" type="submit">Update</button>
                                 </form>
-                                <div class="small text-muted mt-1">
-                                    <em>Set 0 to remove</em>
-                                </div>
+                                <div class="small text-muted mt-1"><em>Set 0 to remove</em></div>
                             </td>
-
                             <td>₹ {{ item.subtotal }}</td>
-
                             <td class="text-end">
-                                <a class="btn btn-sm btn-outline-danger"
-                                   href="{% url 'remove_from_cart' item.id %}">
-                                   Remove
-                                </a>
+                                <a class="btn btn-sm btn-outline-danger" href="{% url 'remove_from_cart' item.id %}">Remove</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -96,8 +87,9 @@
             </table>
         </div>
 
-        <div class="text-end">
-            <a class="btn btn-success" href="{% url 'checkout' %}">Proceed to Checkout</a>
+        <div class="d-flex flex-column flex-md-row justify-content-end align-items-center gap-3 mt-3">
+            <div class="fw-bold h5 mb-0">Total: ₹ {{ total }}</div>
+            <a class="btn btn-success px-4" href="{% url 'checkout' %}">Proceed to Checkout</a>
         </div>
 
     {% else %}

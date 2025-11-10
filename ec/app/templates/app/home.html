@@ -1,1355 +1,484 @@
 {%extends 'app/base.html'%}
 {%load static %}
 {% block title %}Home{% endblock title %}
-
 {%block banner-slider%}
-
 <div class="page-content">
-
- <!--start carousel-->
-  <section class="slider-section">
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"></button>
-    </div>
-
-    <div class="carousel-inner">
-
-      <!-- Slide 1 -->
-      <div class="carousel-item active bg-primary">
-        <div class="row d-flex align-items-center">
-          <div class="col d-none d-lg-flex justify-content-center">
-            <div>
-              <h3 class="h3 fw-light text-white fw-bold">Ancient Wisdom, Modern Wellness</h3>
-              <h1 class="h1 text-white fw-bold">Healing Power of Ayurveda</h1>
-              <p class="text-white fw-bold"><i>Last call for up to 25%</i></p>
-              <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+   <!--start carousel-->
+   <section class="slider-section">
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+         <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"></button>
+         </div>
+         <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active bg-primary">
+               <div class="row d-flex align-items-center">
+                  <div class="col d-none d-lg-flex justify-content-center">
+                     <div>
+                        <h3 class="h3 fw-light text-white fw-bold">Ancient Wisdom, Modern Wellness</h3>
+                        <h1 class="h1 text-white fw-bold">Healing Power of Ayurveda</h1>
+                        <p class="text-white fw-bold"><i>Last call for up to 25%</i></p>
+                        <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <img src="{% static 'app/images/ayurveda_img/pexels-mareefe-1638280.jpg' %}" class="img-fluid" alt="Ayurvedic healing banner">
+                  </div>
+               </div>
             </div>
-          </div>
-          <div class="col">
-            <img src="{% static 'app/images/ayurveda_img/pexels-mareefe-1638280.jpg' %}" class="img-fluid" alt="Ayurvedic healing banner">
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="carousel-item bg-red">
-        <div class="row d-flex align-items-center">
-          <div class="col d-none d-lg-flex justify-content-center">
-            <div>
-              <h3 class="h3 fw-light text-white fw-bold">Nature’s Goodness in Every Drop</h3>
-              <h1 class="h1 text-white fw-bold">Ayurvedic Juices and Remedies for Everyday Wellness.</h1>
-              <p class="text-white fw-bold"><i>Last call for up to 35%</i></p>
-              <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+            <!-- Slide 2 -->
+            <div class="carousel-item bg-red">
+               <div class="row d-flex align-items-center">
+                  <div class="col d-none d-lg-flex justify-content-center">
+                     <div>
+                        <h3 class="h3 fw-light text-white fw-bold">Nature’s Goodness in Every Drop</h3>
+                        <h1 class="h1 text-white fw-bold">Ayurvedic Juices and Remedies for Everyday Wellness.</h1>
+                        <p class="text-white fw-bold"><i>Last call for up to 35%</i></p>
+                        <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <img src="{% static 'app/images/ayurveda_img/banner1.jpg' %}" class="img-fluid" alt="Ayurvedic juices and wellness">
+                  </div>
+               </div>
             </div>
-          </div>
-          <div class="col">
-            <img src="{% static 'app/images/ayurveda_img/banner1.jpg' %}" class="img-fluid" alt="Ayurvedic juices and wellness">
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="carousel-item bg-purple">
-        <div class="row d-flex align-items-center">
-          <div class="col d-none d-lg-flex justify-content-center">
-            <div>
-              <h3 class="h3 fw-light text-white fw-bold">Wellness Rooted in Nature</h3>
-              <h1 class="h1 text-white fw-bold">Balance Your Life with Ayurveda</h1>
-              <p class="text-white fw-bold"><i>Last call for up to 15%</i></p>
-              <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+            <!-- Slide 3 -->
+            <div class="carousel-item bg-purple">
+               <div class="row d-flex align-items-center">
+                  <div class="col d-none d-lg-flex justify-content-center">
+                     <div>
+                        <h3 class="h3 fw-light text-white fw-bold">Wellness Rooted in Nature</h3>
+                        <h1 class="h1 text-white fw-bold">Balance Your Life with Ayurveda</h1>
+                        <p class="text-white fw-bold"><i>Last call for up to 15%</i></p>
+                        <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <img src="{% static 'app/images/ayurveda_img/banner2.jpg' %}" class="img-fluid" alt="Balance your life with Ayurveda">
+                  </div>
+               </div>
             </div>
-          </div>
-          <div class="col">
-            <img src="{% static 'app/images/ayurveda_img/banner2.jpg' %}" class="img-fluid" alt="Balance your life with Ayurveda">
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 4 -->
-      <div class="carousel-item bg-yellow">
-        <div class="row d-flex align-items-center">
-          <div class="col d-none d-lg-flex justify-content-center">
-            <div>
-              <h3 class="h3 fw-light text-dark fw-bold">Ancient Remedies, Modern Care</h3>
-              <h1 class="h1 text-dark fw-bold">Rediscover the secrets of holistic living.</h1>
-              <p class="text-dark fw-bold"><i>Last call for up to 45%</i></p>
-              <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+            <!-- Slide 4 -->
+            <div class="carousel-item bg-yellow">
+               <div class="row d-flex align-items-center">
+                  <div class="col d-none d-lg-flex justify-content-center">
+                     <div>
+                        <h3 class="h3 fw-light text-dark fw-bold">Ancient Remedies, Modern Care</h3>
+                        <h1 class="h1 text-dark fw-bold">Rediscover the secrets of holistic living.</h1>
+                        <p class="text-dark fw-bold"><i>Last call for up to 45%</i></p>
+                        <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <img src="{% static 'app/images/ayurveda_img/banner3.jpg' %}" class="img-fluid" alt="Ancient remedies for modern living">
+                  </div>
+               </div>
             </div>
-          </div>
-          <div class="col">
-            <img src="{% static 'app/images/ayurveda_img/banner3.jpg' %}" class="img-fluid" alt="Ancient remedies for modern living">
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 5 -->
-      <div class="carousel-item bg-green">
-        <div class="row d-flex align-items-center">
-          <div class="col d-none d-lg-flex justify-content-center">
-            <div>
-              <h3 class="h3 fw-light text-white fw-bold">Glow from Within with Ayurveda</h3>
-              <h1 class="h1 text-white fw-bold">Herbal care for your skin, hair, and total wellness.</h1>
-              <p class="text-white fw-bold"><i>Last call for up to 24%</i></p>
-              <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+            <!-- Slide 5 -->
+            <div class="carousel-item bg-green">
+               <div class="row d-flex align-items-center">
+                  <div class="col d-none d-lg-flex justify-content-center">
+                     <div>
+                        <h3 class="h3 fw-light text-white fw-bold">Glow from Within with Ayurveda</h3>
+                        <h1 class="h1 text-white fw-bold">Herbal care for your skin, hair, and total wellness.</h1>
+                        <p class="text-white fw-bold"><i>Last call for up to 24%</i></p>
+                        <div><a class="btn btn-dark btn-ecomm" href="{% url 'product_list' %}">Shop Now</a></div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <img src="{% static 'app/images/ayurveda_img/Adobe Express - file.png' %}" class="img-fluid" alt="Herbal care for total wellness">
+                  </div>
+               </div>
             </div>
-          </div>
-          <div class="col">
-            <img src="{% static 'app/images/ayurveda_img/Adobe Express - file.png' %}" class="img-fluid" alt="Herbal care for total wellness">
-          </div>
-        </div>
+         </div>
+         <!-- Carousel Controls -->
+         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Previous</span>
+         </button>
+         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Next</span>
+         </button>
       </div>
+   </section>
+   <!--end carousel-->
+</div>
+{% endblock banner-slider %}
+{% block information%}
+<!--start Featured Products section--> 
+<section class="featured-products">
+   <div class="container">
+      <div class="text-center pb-3">
+         <h3 class="mb-0 h3 fw-bold">Best Sellers</h3>
+         <p class="mb-0 text-capitalize">Our most popular products</p>
+      </div>
+      <div class="product-grid">
+         {% for product in featured_products %} 
+         <div class="card">
+            <div class="position-relative overflow-hidden">
+               <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                  <a href="{% url 'add_to_wishlist' product.product_id %}"><i class="bi bi-heart"></i></a>
+                  <form method="post" action="{% url 'add_to_cart' product.product_id %}" style="display:inline;">
+                     {% csrf_token %}
+                     <input type="hidden" name="quantity" value="1">
+                     <button type="submit" style="background:none;border:none;padding:0;">
+                        <i class="bi bi-basket3"></i>
+                     </button>
+                  </form>
+                  <a href="{% url 'product_detail' product.product_id %}"><i class="bi bi-zoom-in"></i></a>
+               </div>               
+               <a href="{% url 'product_list' %}"> <img src="{{ product.image_url.url }}" class="card-img-top-products" alt="{{ product.name }}"> </a> 
+            </div>
+            <div class="card-body">
+               <div class="product-info text-center">
+                  <h6 class="mb-1 fw-bold product-name">{{ product.name }}</h6>
+                  <div class="ratings mb-1 h6"> <i class="bi bi-star-fill text-warning"></i> <i class="bi bi-star-fill text-warning"></i> <i class="bi bi-star-fill text-warning"></i> <i class="bi bi-star-fill text-warning"></i> <i class="bi bi-star-fill text-warning"></i> </div>
+                  <p class="mb-0 h6 fw-bold product-price">₹{{ product.price }}</p>
+               </div>
+            </div>
+         </div>
+         {% endfor %} 
+      </div>
+   </div>
+   </div> </div> 
+</section>
+<!--start tabular product-->
+<section class="product-tab-section section-padding bg-light">
+   <div class="container">
+      <div class="text-center pb-3">
+         <h3 class="mb-0 h3 fw-bold">Latest Products</h3>
+         <p class="mb-0 text-capitalize">List of our Latest Products.</p>
+      </div>
+      <div class="row">
+         <div class="col-auto mx-auto">
+            <div class="product-tab-menu table-responsive">
+               <ul class="nav nav-pills flex-nowrap" id="pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                     <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#new-arrival" type="button">New
+                     Arrival</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                     <button class="nav-link" data-bs-toggle="pill" data-bs-target="#best-sellar" type="button">Best
+                     Sellar</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                     <button class="nav-link" data-bs-toggle="pill" data-bs-target="#trending-product"
+                        type="button">Trending</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                     <button class="nav-link" data-bs-toggle="pill" data-bs-target="#special-offer" type="button">Special
+                     Offer</button>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <hr>
+      <div class="tab-content tabular-product">
+             <div class="tab-pane fade show active" id="new-arrival">
+                  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+                     {% for product in latest_products %}
+                        <div class="col">
+                           <div class="card">
+                              <div class="position-relative overflow-hidden">
+                                 <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                    <a href="{% url 'add_to_wishlist' product.product_id %}"><i class="bi bi-heart"></i></a>
+                                    <form method="post" action="{% url 'add_to_cart' product.product_id %}" style="display:inline;">
+                                       {% csrf_token %}
+                                       <input type="hidden" name="quantity" value="1">
+                                       <button type="submit" style="background:none;border:none;padding:0;">
+                                          <i class="bi bi-basket3"></i>
+                                       </button>
+                                    </form>
+                                    <a href="{% url 'product_detail' product.product_id %}"><i class="bi bi-zoom-in"></i></a>
+                                 </div>
+                                 <a href="{% url 'product_detail' product.product_id %}">
+                                    {% if product.image_url %}
+                                       <img src="{{ product.image_url.url }}" class="card-img-top-products" alt="{{ product.name }}">
+                                    {% else %}
+                                       <img src="{% static 'app/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg' %}" class="card-img-top-products" alt="No image available">
+                                    {% endif %}
+                                 </a>
+                              </div>
+                              <div class="card-body">
+                                 <div class="product-info text-center">
+                                    <h6 class="mb-1 fw-bold product-name">{{ product.name }}</h6>
+                                    <div class="ratings mb-1 h6">
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                    <p class="mb-0 h6 fw-bold product-price">₹{{ product.price }}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     {% endfor %}
+                  </div>
+             </div>
 
-    </div>
+             <div class="tab-pane fade" id="best-sellar">
+                  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+                     {% for product in best_seller_products %}
+                        <div class="col">
+                           <div class="card">
+                              <div class="position-relative overflow-hidden">
+                                 <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                    <a href="{% url 'add_to_wishlist' product.product_id %}"><i class="bi bi-heart"></i></a>
+                                    <form method="post" action="{% url 'add_to_cart' product.product_id %}" style="display:inline;">
+                                       {% csrf_token %}
+                                       <input type="hidden" name="quantity" value="1">
+                                       <button type="submit" style="background:none;border:none;padding:0;">
+                                          <i class="bi bi-basket3"></i>
+                                       </button>
+                                    </form>
+                                    <a href="{% url 'product_detail' product.product_id %}"><i class="bi bi-zoom-in"></i></a>
+                                 </div>
+                                 <a href="{% url 'product_detail' product.product_id %}">
+                                    {% if product.image_url %}
+                                       <img src="{{ product.image_url.url }}" class="card-img-top-products" alt="{{ product.name }}">
+                                    {% else %}
+                                       <img src="{% static 'app/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg' %}" class="card-img-top-products" alt="No image available">
+                                    {% endif %}
+                                 </a>
+                              </div>
+                              <div class="card-body">
+                                 <div class="product-info text-center">
+                                    <h6 class="mb-1 fw-bold product-name">{{ product.name }}</h6>
+                                    <div class="ratings mb-1 h6">
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                    <p class="mb-0 h6 fw-bold product-price">₹{{ product.price }}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     {% endfor %}
+                  </div>
+             </div>
 
-    <!-- Carousel Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+             <div class="tab-pane fade" id="trending-product">
+                  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+                     {% for product in trending_products %}
+                        <div class="col">
+                           <div class="card">
+                              <div class="position-relative overflow-hidden">
+                                 <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                    <a href="{% url 'add_to_wishlist' product.product_id %}"><i class="bi bi-heart"></i></a>
+                                    <form method="post" action="{% url 'add_to_cart' product.product_id %}" style="display:inline;">
+                                       {% csrf_token %}
+                                       <input type="hidden" name="quantity" value="1">
+                                       <button type="submit" style="background:none;border:none;padding:0;">
+                                          <i class="bi bi-basket3"></i>
+                                       </button>
+                                    </form>
+                                    <a href="{% url 'product_detail' product.product_id %}"><i class="bi bi-zoom-in"></i></a>
+                                 </div>
+                                 <a href="{% url 'product_detail' product.product_id %}">
+                                    {% if product.image_url %}
+                                       <img src="{{ product.image_url.url }}" class="card-img-top-products" alt="{{ product.name }}">
+                                    {% else %}
+                                       <img src="{% static 'app/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg' %}" class="card-img-top-products" alt="No image available">
+                                    {% endif %}
+                                 </a>
+                              </div>
+                              <div class="card-body">
+                                 <div class="product-info text-center">
+                                    <h6 class="mb-1 fw-bold product-name">{{ product.name }}</h6>
+                                    <div class="ratings mb-1 h6">
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                    <p class="mb-0 h6 fw-bold product-price">₹{{ product.price }}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     {% endfor %}
+                  </div>
+             </div>
 
-  </div>
+             <div class="tab-pane fade" id="special-offer">
+                  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+                     {% for product in special_offer_products %}
+                        <div class="col">
+                           <div class="card">
+                              <div class="position-relative overflow-hidden">
+                                 <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                    <a href="{% url 'add_to_wishlist' product.product_id %}"><i class="bi bi-heart"></i></a>
+                                    <form method="post" action="{% url 'add_to_cart' product.product_id %}" style="display:inline;">
+                                       {% csrf_token %}
+                                       <input type="hidden" name="quantity" value="1">
+                                       <button type="submit" style="background:none;border:none;padding:0;">
+                                          <i class="bi bi-basket3"></i>
+                                       </button>
+                                    </form>
+                                    <a href="{% url 'product_detail' product.product_id %}"><i class="bi bi-zoom-in"></i></a>
+                                 </div>
+                                 <a href="{% url 'product_detail' product.product_id %}">
+                                    {% if product.image_url %}
+                                       <img src="{{ product.image_url.url }}" class="card-img-top-products" alt="{{ product.name }}">
+                                    {% else %}
+                                       <img src="{% static 'app/images/ayurveda_img/pexels-nora-brody-1241785370-23511158.jpg' %}" class="card-img-top-products" alt="No image available">
+                                    {% endif %}
+                                 </a>
+                              </div>
+                              <div class="card-body">
+                                 <div class="product-info text-center">
+                                    <h6 class="mb-1 fw-bold product-name">{{ product.name }}</h6>
+                                    <div class="ratings mb-1 h6">
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                       <i class="bi bi-star-fill text-warning"></i>
+                                    </div>
+                                    <p class="mb-0 h6 fw-bold product-price">₹{{ product.price }}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     {% endfor %}
+                  </div>
+             </div>
+      </div>
+   </div>
+</section>
+<!--end tabular product-->
+<!--start features-->
+<section class="product-thumb-slider section-padding">
+   <div class="container">
+      <div class="text-center pb-3">
+         <h3 class="mb-0 h3 fw-bold">What We Offer!</h3>
+         <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
+      </div>
+      <div class="row row-cols-1 row-cols-lg-4 g-4">
+         <div class="col d-flex">
+            <div class="card depth border-0 rounded-0 border-bottom border-primary border-3 w-100">
+               <div class="card-body text-center">
+                  <div class="h1 fw-bold my-2 text-primary">
+                     <i class="bi bi-truck"></i>
+                  </div>
+                  <h5 class="fw-bold">Free Delivery</h5>
+                  <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col d-flex">
+            <div class="card depth border-0 rounded-0 border-bottom border-danger border-3 w-100">
+               <div class="card-body text-center">
+                  <div class="h1 fw-bold my-2 text-danger">
+                     <i class="bi bi-credit-card"></i>
+                  </div>
+                  <h5 class="fw-bold">Secure Payment</h5>
+                  <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col d-flex">
+            <div class="card depth border-0 rounded-0 border-bottom border-success border-3 w-100">
+               <div class="card-body text-center">
+                  <div class="h1 fw-bold my-2 text-success">
+                     <i class="bi bi-minecart-loaded"></i>
+                  </div>
+                  <h5 class="fw-bold">Free Returns</h5>
+                  <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
+               </div>
+            </div>
+         </div>
+         <div class="col d-flex">
+            <div class="card depth border-0 rounded-0 border-bottom border-warning border-3 w-100">
+               <div class="card-body text-center">
+                  <div class="h1 fw-bold my-2 text-warning">
+                     <i class="bi bi-headset"></i>
+                  </div>
+                  <h5 class="fw-bold">24/7 Support</h5>
+                  <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--end row-->
+   </div>
 </section>
 
-    <!--end carousel-->
 
-</div>
-
-
-{% endblock banner-slider %}
-
-{% block information%}
-
-<!--start Featured Products section-->
-    <section class="featured-products">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 h3 fw-bold">Best Sellers</h3>
-          <p class="mb-0 text-capitalize">Our most popular products</p>
-        </div>
-        <div class="product-grid">
-          {% for product in products %}
-          {% endfor %}
-          <div class="card">
-            <div class="position-relative overflow-hidden">
-              <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-
-  <!-- ❤️ Add to Wishlist -->
-  <a href="{% url 'add_to_wishlist' 1 %}">
-    <i class="bi bi-heart"></i>
-  </a>
-
-  <!-- 🛒 Add to Cart -->
-  <a href="{% url 'add_to_cart' 1 %}">
-    <i class="bi bi-basket3"></i>
-  </a>
-
-  <!-- 🔍 View Product -->
-  <a href="{% url 'product_detail' 1 %}">
-    <i class="bi bi-zoom-in"></i>
-  </a>
-</div>
-
-              <a href="{% url 'product_list' %}">
-                <img src="{% static 'app/images/ayurveda_img/Triphala Powder.jpg' %}" class="card-img-top" alt="...">
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="product-info text-center">
-                <h6 class="mb-1 fw-bold product-name">Triphala powder</h6>
-                <div class="ratings mb-1 h6">
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                </div>
-                <p class="mb-0 h6 fw-bold product-price">220 Rs/</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="position-relative overflow-hidden">
-                <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-
-  <!-- ❤️ Add to Wishlist -->
-  <a href="{% url 'add_to_wishlist' 1 %}">
-    <i class="bi bi-heart"></i>
-  </a>
-
-  <!-- 🛒 Add to Cart -->
-  <a href="{% url 'add_to_cart' 1 %}">
-    <i class="bi bi-basket3"></i>
-  </a>
-
-  <!-- 🔍 View Product -->
-  <a href="{% url 'product_detail' 1 %}">
-    <i class="bi bi-zoom-in"></i>
-  </a>
-</div>
-              <a href="{% url 'product_list' %}">
-                <img src="{% static 'app/images/ayurveda_img/tulsi green tea.jpg' %}" class="card-img-top" alt="...">
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="product-info text-center">
-                <h6 class="mb-1 fw-bold product-name">Tulsi green tea</h6>
-                <div class="ratings mb-1 h6">
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                </div>
-                <p class="mb-0 h6 fw-bold product-price">170 Rs/</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="position-relative overflow-hidden">
-             <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-
-  <!-- ❤️ Add to Wishlist -->
-  <a href="{% url 'add_to_wishlist' 1 %}">
-    <i class="bi bi-heart"></i>
-  </a>
-
-  <!-- 🛒 Add to Cart -->
-  <a href="{% url 'add_to_cart' 1 %}">
-    <i class="bi bi-basket3"></i>
-  </a>
-
-  <!-- 🔍 View Product -->
-  <a href="{% url 'product_detail' 1 %}">
-    <i class="bi bi-zoom-in"></i>
-  </a>
-</div>
-              <a href="{% url 'product_list' %}">
-                <img src="{% static 'app/images/ayurveda_img/Lemongrass.jpg' %}" class="card-img-top" alt="...">
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="product-info text-center">
-                <h6 class="mb-1 fw-bold product-name">Lemongrass</h6>
-                <div class="ratings mb-1 h6">
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                </div>
-                <p class="mb-0 h6 fw-bold product-price">150 Rs/</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="position-relative overflow-hidden">
-             <div class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-
-  <!-- ❤️ Add to Wishlist -->
-  <a href="{% url 'add_to_wishlist' 1 %}">
-    <i class="bi bi-heart"></i>
-  </a>
-
-  <!-- 🛒 Add to Cart -->
-  <a href="{% url 'add_to_cart' 1 %}">
-    <i class="bi bi-basket3"></i>
-  </a>
-
-  <!-- 🔍 View Product -->
-  <a href="{% url 'product_detail' 1 %}">
-    <i class="bi bi-zoom-in"></i>
-  </a>
-</div>
-              <a href="{% url 'product_list' %}">
-                <img src="{% static 'app/images/ayurveda_img/facepack.jpg' %}" class="card-img-top" alt="...">
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="product-info text-center">
-                <h6 class="mb-1 fw-bold product-name">Face Pack</h6>
-                <div class="ratings mb-1 h6">
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                  <i class="bi bi-star-fill text-warning"></i>
-                </div>
-                <p class="mb-0 h6 fw-bold product-price">250 Rs/</p>
-              </div>
-            </div>
-          </div>
-         
-        </div>
+<!--subscribe banner-->
+<section class="product-thumb-slider subscribe-banner p-5">
+   <div class="row">
+      <div class="col-12 col-lg-6 mx-auto">
+         <div class="text-center">
+            <h3 class="mb-0 fw-bold text-white">Get Latest Update by <br> Subscribe Our Newsletter</h3>
+            <form method="post" action="" class="mt-3">
+               {% csrf_token %}
+               <input type="email" name="subscribe_email" class="form-control form-control-lg bubscribe-control rounded-0 px-5 py-3" placeholder="Enter your email" required>
+               <textarea name="subscribe_message" class="form-control mt-3" placeholder="Your message (optional)"></textarea>
+               <div class="mt-3 d-grid">
+                  <button type="submit" class="btn btn-lg btn-ecomm bubscribe-button px-5 py-3">Subscribe</button>
+               </div>
+            </form>
+            {% if subscribe_success %}
+               <div class="alert alert-success mt-3">Thank you for subscribing!</div>
+            {% endif %}
+         </div>
       </div>
-    </section>
-    <!--end Featured Products slider--> 
-
-
-
-
- <!--start tabular product-->
-    <section class="product-tab-section section-padding bg-light">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 h3 fw-bold">Latest Products</h3>
-          <p class="mb-0 text-capitalize">List of our Latest Products.</p>
-        </div>
-        <div class="row">
-          <div class="col-auto mx-auto">
-            <div class="product-tab-menu table-responsive">
-              <ul class="nav nav-pills flex-nowrap" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#new-arrival" type="button">New
-                    Arrival</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" data-bs-toggle="pill" data-bs-target="#best-sellar" type="button">Best
-                    Sellar</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" data-bs-toggle="pill" data-bs-target="#trending-product"
-                    type="button">Trending</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" data-bs-toggle="pill" data-bs-target="#special-offer" type="button">Special
-                    Offer</button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <div class="tab-content tabular-product">
-          <div class="tab-pane fade show active" id="new-arrival">
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-nay-nyo-727253247-18680598.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Product Name</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="ribban">New Season</div>
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/acidity juice.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Acidity Juice</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/aloe facewash.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Aloe Facewash</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/neem capsules.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Neem Capsules</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-goumbik-298720.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">goumbik</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="{% url 'product_list' %}">
-                      <img src="{% static 'app/images/ayurveda_img/Aloe Vera Gel.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Aloe Vera Gel</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/amla juice.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Amla Juice</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/ashvagandha.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Ashvagandha</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/Triphala Powder.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Triphala Powder</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/tulsi green tea.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Tulsi Green Tea</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="best-sellar">
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/Turmeric Curcumin ..jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Turmeric Curcumin</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/Natural Shatavari _ Asparagus Racemosus Powder for Radiant Skin, Hair and Health Care.jpg '%}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Shatavari</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/SheCare_1.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">SheCare</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="ribban bg-primary">New products</div>
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-vicky-3273989.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Syndrona</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-tranmautritam-92327.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Ashwagandha</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="trending-product">
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-souranshi-fashion-and-lifestyle-magazine-2959920-7148531.jpg '%}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Herbs</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/herbal tea.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Herbal Tea</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="ribban bg-warning text-dark">New Season</div>
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="javascript:;">
-                      <img src="{% static 'app/images/ayurveda_img/DiabicCare_WhiteBG.jpg '%}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Diabetic Care</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-galiiya-20689437.jpg '%}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Herbal care</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-mareefe-1638280.jpg '%}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Healthy tea</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="special-offer">
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-n-voitkevich-7526061.jpg '%}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Healthy herbs</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-fecundap6-2178565.jpg '%}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Herbs</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="ribban">50% Discount</div>
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-anna-pou-8329337.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Digestive care</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/pexels-valentin-ivantsov-2154772556-34525474.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Herbal Mint</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
-                    </div>
-                    <a href="product-details.html">
-                      <img src="{% static 'app/images/ayurveda_img/Thyro_1.jpg' %}" class="card-img-top-products" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h6 class="mb-1 fw-bold product-name">Thyroid Support</h6>
-                      <div class="ratings mb-1 h6">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                      </div>
-                      <p class="mb-0 h6 fw-bold product-price">$49</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+   </div>
+</section>
+<!--subscribe banner-->
+<!--start blog-->
+<section class="section-padding">
+   <div class="container">
+      <div class="text-center pb-3">
+         <h3 class="mb-0 fw-bold">Latest Blog</h3>
+         <p class="mb-0 text-capitalize">Check our latest news</p>
       </div>
-    </section>
-    <!--end tabular product-->
-     <!--start features-->
-    <section class="product-thumb-slider section-padding">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 h3 fw-bold">What We Offer!</h3>
-          <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
-        </div>
-        <div class="row row-cols-1 row-cols-lg-4 g-4">
-          <div class="col d-flex">
-            <div class="card depth border-0 rounded-0 border-bottom border-primary border-3 w-100">
-              <div class="card-body text-center">
-                <div class="h1 fw-bold my-2 text-primary">
-                  <i class="bi bi-truck"></i>
-                </div>
-                <h5 class="fw-bold">Free Delivery</h5>
-                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card depth border-0 rounded-0 border-bottom border-danger border-3 w-100">
-              <div class="card-body text-center">
-                <div class="h1 fw-bold my-2 text-danger">
-                  <i class="bi bi-credit-card"></i>
-                </div>
-                <h5 class="fw-bold">Secure Payment</h5>
-                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card depth border-0 rounded-0 border-bottom border-success border-3 w-100">
-              <div class="card-body text-center">
-                <div class="h1 fw-bold my-2 text-success">
-                  <i class="bi bi-minecart-loaded"></i>
-                </div>
-                <h5 class="fw-bold">Free Returns</h5>
-                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card depth border-0 rounded-0 border-bottom border-warning border-3 w-100">
-              <div class="card-body text-center">
-                <div class="h1 fw-bold my-2 text-warning">
-                  <i class="bi bi-headset"></i>
-                </div>
-                <h5 class="fw-bold">24/7 Support</h5>
-                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end row-->
+      <div class="blog-cards">
+         {% if blogs %}
+         <div class="row row-cols-1 row-cols-lg-3 g-4">
+           {% for blog in blogs %}
+                   <div class="col">
+                      <div class="card">
+                         {% if blog.image %}
+                            <img src="{{ blog.image.url }}" class="card-img-top rounded-0" alt="{{ blog.title }}">
+                         {% endif %}
+                         <div class="card-body">
+                            <div class="d-flex align-items-center gap-4">
+                               <div class="posted-by">
+                                  <p class="mb-0"><i class="bi bi-person me-2"></i>{{ blog.author }}</p>
+                               </div>
+                               <div class="posted-date">
+                                  <p class="mb-0"><i class="bi bi-calendar me-2"></i>{{ blog.date }}</p>
+                               </div>
+                            </div>
+                            <h5 class="card-title fw-bold mt-3">{{ blog.title }}</h5>
+                            <p class="mb-0">{{ blog.summary|truncatewords:30 }}</p>
+                            <a href="{% url 'blogdetails' blog.id %}" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
+                         </div>
+                      </div>
+                   </div>
+           {% endfor %}
+         </div>
+         <!--end row-->
+         {% else %}
+         <div class="text-center text-muted py-5">No blog posts available yet.</div>
+         {% endif %}
       </div>
-    </section>
-
-<!--start special product-->
-    <section class="section-padding bg-section-2">
-      <div class="container">
-        <div class="card border-0 rounded-0 p-3 depth">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 text-center">
-         
-              <img src="{% static 'app/images/ayurveda_img/pexels-galiiya-20689437.jpg' %}" class="img-fluid rounded-0" alt="...">
- 
-            </div>
-            <div class="col-lg-6">
-              <div class="card-body">
-                <h3 class="fw-bold">New Features of Ayurveda Products</h3>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item bg-transparent px-0">Contrary to popular belief, Lorem Ipsum is not simply
-                    random text.</li>
-                  <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
-                  </li>
-                  <li class="list-group-item bg-transparent px-0">There are many variations of passages of Lorem Ipsum
-                    available.</li>
-                    <li class="list-group-item bg-transparent px-0">There are many variations of passages
-                      available.</li>
-                </ul>
-                <div class="buttons mt-4 d-flex flex-column flex-lg-row gap-3">
-                  <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Buy Now</a>
-                  <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3">View Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--start special product-->
-
- 
-    <!--start cartegory slider-->
-    <section class="cartegory-slider section-padding bg-section-2">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 h3 fw-bold">Top Categories</h3>
-          <p class="mb-0 text-capitalize">Select your favorite categories and purchase</p>
-        </div>
-        <div class="cartegory-box">
-          <a href="{% url 'product_list' %}">
-            <div class="card">
-              <div class="card-body">
-                <div class="overflow-hidden">
-                  <img src="{% static 'app/images/ayurveda_img/pexels-anna-pou-8329337.jpg' %}" class="card-img-top-products rounded-0" alt="...">
-                </div>
-                <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Digestive care</h5>
-                  <h6 class="mb-0 product-number fw-bold">856 Products</h6>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="shop-grid-type-4.html">
-            <div class="card">
-              <div class="card-body">
-                <div class="overflow-hidden">
-                 <img src="{% static 'app/images/ayurveda_img/DiabicCare_WhiteBG.jpg' %}" class="card-img-top-products rounded-0" alt="...">                </div>
-                <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Diabetic care</h5>
-                  <h6 class="mb-0 product-number fw-bold">169 Products</h6>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="shop-grid-type-4.html">
-            <div class="card">
-              <div class="card-body">
-                <div class="overflow-hidden">
-                <img src="{% static 'app/images/ayurveda_img/ashvagandha.jpg' %}" class="card-img-top-products rounded-0" alt="... ">                </div>
-                <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Ashvagandha</h5>
-                  <h6 class="mb-0 product-number fw-bold">589 Products</h6>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="shop-grid-type-4.html">
-            <div class="card">
-              <div class="card-body">
-                <div class="overflow-hidden">
-                 <img src="{% static 'app/images/ayurveda_img/brown sugar.jpg' %}" class="card-img-top-products rounded-0" alt="...">                </div>
-                <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Brown Sugar</h5>
-                  <h6 class="mb-0 product-number fw-bold">278 Products</h6>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="shop-grid-type-4.html">
-            <div class="card">
-              <div class="card-body">
-                <div class="overflow-hidden">
-                    <img src="{% static 'app/images/ayurveda_img/tulsi green tea.jpg' %}" class="card-img-top-products rounded-0" alt="...">                </div>
-                <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Tulsi Green Tea</h5>
-                  <h6 class="mb-0 product-number fw-bold">985 Products</h6>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="shop-grid-type-4.html">
-            <div class="card">
-              <div class="card-body">
-                <div class="overflow-hidden">
-                  <img src="{% static 'app/images/ayurveda_img/Turmeric Curcumin ..jpg' %}" class="card-img-top-products rounded-0" alt="...">
-                </div>
-                <div class="text-center">
-                  <h5 class="mb-1 cartegory-name mt-3 fw-bold">Turmeric Curcumin</h5>
-                  <h6 class="mb-0 product-number fw-bold">489 Products</h6>
-                </div>
-              </div>
-            </div>
-          </a>
- 
-        </div>
-      </div>
-    </section>
-    <!--end cartegory slider-->
- 
- 
-    <!--subscribe banner-->
-    <section class="product-thumb-slider subscribe-banner p-5">
-      <div class="row">
-        <div class="col-12 col-lg-6 mx-auto">
-          <div class="text-center">
-            <h3 class="mb-0 fw-bold text-white">Get Latest Update by <br> Subscribe Our Newslater</h3>
-            <div class="mt-3">
-              <input type="text" class="form-control form-control-lg bubscribe-control rounded-0 px-5 py-3"
-                placeholder="Enter your email">
-            </div>
-            <div class="mt-3 d-grid">
-              <button type="button" class="btn btn-lg btn-ecomm bubscribe-button px-5 py-3">Subscribe</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--subscribe banner-->
- 
- 
-    <!--start blog-->
-    <section class="section-padding">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 fw-bold">Latest Blog</h3>
-          <p class="mb-0 text-capitalize">Check our latest news</p>
-        </div>
-        <div class="blog-cards">
-          <div class="row row-cols-1 row-cols-lg-3 g-4">
-            <div class="col">
-              <div class="card">
-                <img src="{% static 'app/images/ayurveda_img/pexels-asphotography-105028.jpg' %}" class="card-img-top rounded-0" alt="...">
-                <div class="card-body">
-                  <div class="d-flex align-items-center gap-4">
-                    <div class="posted-by">
-                      <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
-                    </div>
-                    <div class="posted-date">
-                      <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
-                    </div>
-                  </div>
-                  <h5 class="card-title fw-bold mt-3">Embrace the Healing Power of Ayurveda</h5>
-                  <p class="mb-0">Some quick example text to build on the card title and make.</p>
-                  <a href="{% url 'blogdetails' %}" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                 <img src="{% static 'app/images/ayurveda_img/pexels-doterra-international-llc-2204678-17380335.jpg' %}" class="card-img-top rounded-0" alt="...">
-                <div class="card-body">
-                  <div class="d-flex align-items-center gap-4">
-                    <div class="posted-by">
-                      <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
-                    </div>
-                    <div class="posted-date">
-                      <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
-                    </div>
-                  </div>
-                  <h5 class="card-title fw-bold mt-3">Embrace the Healing Power of Ayurveda</h5>
-                  <p class="mb-0">Some quick example text to build on the card title and make.</p>
-                  <a href="{% url 'blogdetails' %}" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                 <img src="{% static 'app/images/ayurveda_img/pexels-tranmautritam-92327.jpg' %}" class="card-img-top rounded-0" alt="...">
-                <div class="card-body">
-                  <div class="d-flex align-items-center gap-4">
-                    <div class="posted-by">
-                      <p class="mb-0"><i class="bi bi-person me-2"></i>Virendra</p>
-                    </div>
-                    <div class="posted-date">
-                      <p class="mb-0"><i class="bi bi-calendar me-2"></i>15 Aug, 2022</p>
-                    </div>
-                  </div>
-                  <h5 class="card-title fw-bold mt-3">Embrace the Healing Power of Ayurveda</h5>
-                  <p class="mb-0">Some quick example text to build on the card title and make.</p>
-                  <a href="{% url 'blogdetails' %}" class="btn btn-outline-dark btn-ecomm mt-3">Read More</a>
-                </div>
-              </div>
-            </div>
- 
-          </div>
-          <!--end row-->
-        </div>
-      </div>
-    </section>
-    <!--end blog-->
-
-    <!--end features-->
-    {% endblock information%}
+   </div>
+</section>
+<!--end blog-->
+<!--end features-->
+{% endblock information%}

@@ -1,7 +1,35 @@
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
+
+from .models_address import Address
 from decimal import Decimal
+
+# Blog model
+class Blog(models.Model):
+    CATEGORY_CHOICES = [
+        ('Ayurvedic Treatment', 'Ayurvedic Treatment'),
+        ('Ayurvedic Tips', 'Ayurvedic Tips'),
+        ('Remedies', 'Remedies to Manage Hypertension'),
+        ('Natural Remedies', 'Natural Ayurvedic Remedies for Throat Infection Relief'),
+        ('Women’s Wellness', 'Women’s Wellness'),
+        ('Skin Wellness', 'Skin Wellness'),
+        ('Pain Reliever', 'Pain Reliever'),
+        ('Immunity Wellness', 'Immunity Wellness'),
+        ('Diabetic Wellness', 'Diabetic Wellness'),
+        ('Blood Purifier', 'Blood Purifier'),
+    ]
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
+    date = models.DateField()
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='Ayurvedic Tips')
+    image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
+    summary = models.TextField()
+    content = models.TextField()
+
+    def __str__(self):
+        return self.title
 
 
 # CATEGORY_CHOICES = (

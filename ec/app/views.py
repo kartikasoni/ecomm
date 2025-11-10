@@ -10,33 +10,119 @@ from django.contrib import messages
 from django.shortcuts import render
 from django.db.models import Sum, F
 from .models import Product, Cart, Wishlist, Order, OrderItem
+from .models_address import Address
+# Profile view
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def profile(request):
+    return render(request, 'app/profile.html', {'user': request.user})
+
+@login_required
+def edit_profile(request):
+    user = request.user
+    if request.method == 'POST':
+        user.first_name = request.POST.get('first_name', user.first_name)
+        user.last_name = request.POST.get('last_name', user.last_name)
+        user.email = request.POST.get('email', user.email)
+        user.save()
+        messages.success(request, 'Profile updated successfully!')
+        return redirect('profile')
+    return render(request, 'app/edit_profile.html', {'user': user})
+
+# Address management views
+@login_required
+def saved_address(request):
+    addresses = Address.objects.filter(user=request.user)
+    return render(request, 'app/saved_address.html', {'addresses': addresses})
+
+@login_required
+def add_address(request):
+    if request.method == 'POST':
+        Address.objects.create(
+            user=request.user,
+            full_name=request.POST.get('full_name'),
+            address=request.POST.get('address'),
+            city=request.POST.get('city'),
+            state=request.POST.get('state'),
+            pincode=request.POST.get('pincode'),
+            phone=request.POST.get('phone'),
+        )
+        messages.success(request, 'Address added successfully!')
+        return redirect('saved_address')
+    return render(request, 'app/add_address.html')
+
+@login_required
+def edit_address(request, address_id):
+    address = Address.objects.get(id=address_id, user=request.user)
+    if request.method == 'POST':
+        address.full_name = request.POST.get('full_name', address.full_name)
+        address.address = request.POST.get('address', address.address)
+        address.city = request.POST.get('city', address.city)
+        address.state = request.POST.get('state', address.state)
+        address.pincode = request.POST.get('pincode', address.pincode)
+        address.phone = request.POST.get('phone', address.phone)
+        address.save()
+        messages.success(request, 'Address updated successfully!')
+        return redirect('saved_address')
+    return render(request, 'app/edit_address.html', {'address': address})
+
+@login_required
+def delete_address(request, address_id):
+    address = Address.objects.get(id=address_id, user=request.user)
+    address.delete()
+    messages.success(request, 'Address deleted successfully!')
+    return redirect('saved_address')
 from decimal import Decimal
 
 # Create your views here.
 def home(request):
+    from .models import Blog
+    blogs = Blog.objects.all().order_by('-date')[:3]  # Show latest 3 blogs
     """Home page view"""
     products = Product.objects.all()
-    featured_products = products.order_by('-created_at')[:5]  # Get 5 newest products as featured
-    latest_products = products.order_by('-created_at')[:6]  # Get 6 most recent products
+    featured_products = products.order_by('-created_at')[:4]  # 4 newest
+    latest_products = products.order_by('-created_at')[:10]  # 10 newest (New Arrivals)
+    best_seller_products = products.order_by('price')[:10]  # 10 cheapest (Best Seller)
+    trending_products = products.order_by('-updated_at')[:10]  # 10 most recently updated (Trending)
+    special_offer_products = products.order_by('price')[:10]  # 10 cheapest (Special Offer)
     categories = Product.objects.values_list('category', flat=True).distinct()
-    
+
+    subscribe_success = False
+    if request.method == 'POST' and 'subscribe_email' in request.POST:
+        email = request.POST.get('subscribe_email')
+        message = request.POST.get('subscribe_message', '')
+        # Here you could save to DB or send an email. For now, just show success.
+        subscribe_success = True
+
     context = {
         'featured_products': featured_products,
         'latest_products': latest_products,
-        'categories': categories
+        'best_seller_products': best_seller_products,
+        'trending_products': trending_products,
+        'special_offer_products': special_offer_products,
+        'categories': categories,
+        'subscribe_success': subscribe_success,
+        'blogs': blogs
     }
     return render(request, "app/home.html", context)
 
 def blog(request):
-    # TODO: Add blog model and fetch actual posts
-    blog_posts = [
-        {
-            'title': 'Introduction to Ayurveda',
-            'excerpt': 'Learn about the ancient healing system of Ayurveda...',
-            'date': '2023-11-01',
-        }
-    ]
-    return render(request, "app/blog.html", {'blog_posts': blog_posts})
+    from .models import Blog
+    category = request.GET.get('category')
+    blogs = Blog.objects.all().order_by('-date')
+    if category:
+        blogs = blogs.filter(category=category)
+    categories = Blog.objects.values_list('category', flat=True).distinct()
+    top_categories = categories  # For now, same as categories, but could be limited or sorted by count
+    recent_posts = Blog.objects.all().order_by('-date')[:3]  # Always show latest 3 blogs, not filtered by category
+    return render(request, "app/blog.html", {
+        'blogs': blogs,
+        'categories': categories,
+        'recent_posts': recent_posts,
+        'selected_category': category,
+        'top_categories': top_categories
+    })
 
 def forget_password(request):
     if request.method == 'POST':
@@ -48,17 +134,28 @@ def forget_password(request):
   
 @login_required
 def account_dashboard(request):
-    orders = Order.objects.filter(user=request.user).order_by('-order_id')
-    return render(request, "app/account_dashboard.html", {'orders': orders})
-
-def blogdetails(request):
-    # TODO: Add blog detail model
-    blog_post = {
-        'title': 'Introduction to Ayurveda',
-        'content': 'Detailed content about Ayurveda...',
-        'date': '2023-11-01',
+    user = request.user
+    orders = Order.objects.filter(user=user)
+    wishlist_count = Wishlist.objects.filter(user=user).count()
+    address_count = Address.objects.filter(user=user).count()
+    cart_count = Cart.objects.filter(user=user).count()
+    recent_orders = orders.order_by('-created_at')[:3]
+    context = {
+        'user': user,
+        'orders': orders,
+        'orders_count': orders.count(),
+        'wishlist_count': wishlist_count,
+        'address_count': address_count,
+        'cart_count': cart_count,
+        'recent_orders': recent_orders,
     }
-    return render(request, "app/blogdetails.html", {'post': blog_post})
+    return render(request, "app/account_dashboard.html", context)
+
+def blogdetails(request, blog_id):
+    from .models import Blog
+    blog_post = get_object_or_404(Blog, pk=blog_id)
+    recent_posts = Blog.objects.exclude(pk=blog_id).order_by('-date')[:3]
+    return render(request, "app/blogdetails.html", {'post': blog_post, 'recent_posts': recent_posts})
 
 def About_us(request):
     return render(request, "app/About_us.html")
@@ -293,6 +390,7 @@ def checkout(request):
 def place_order(request):
     """Process order placement"""
     if request.method == 'POST':
+        print('DEBUG POST DATA:', request.POST)
         cart_items = Cart.objects.filter(user=request.user).select_related('product')
         
         if not cart_items.exists():
@@ -301,6 +399,12 @@ def place_order(request):
         
         # Get form data
         full_name = request.POST.get('full_name')
+        if not full_name:
+            # Try to fallback to user's full name or username
+            full_name = request.user.get_full_name() or request.user.username
+        if not full_name:
+            messages.error(request, 'Full name is required to place an order.')
+            return redirect('checkout')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         address = request.POST.get('address')
