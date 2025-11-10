@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import pymysql
+<<<<<<< HEAD
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,6 +30,49 @@ SECRET_KEY = "django-insecure-@t4zd(dxu^b5o)i=2y!69!(7t&x*n6%q(9_m8#b-ov)_at(b%%
 DEBUG = True
 
 ALLOWED_HOSTS = []
+=======
+import socket
+import environ
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# DJANGO_SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+# DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
+
+# Install MySQL as Django's backend
+pymysql.install_as_MySQLdb()
+
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+
+
+
+#Quick-start development settings - unsuitable for production
+#See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = "django-insecure-@t4zd(dxu^b5o)i=2y!69!(7t&x*n6%q(9_m8#b-ov)_at(b%%"  
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True   
+
+ALLOWED_HOSTS = [] 
+
+
+# # ✅ Secret key and debug from environment
+# SECRET_KEY = env("DJANGO_SECRET_KEY", default="insecure-dev-key")
+# DEBUG = env.bool("DJANGO_DEBUG", default=True)
+
+# ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+>>>>>>> 03c52099d7f198e679467080d2380535b73cc5f4
 
 
 # Application definition
@@ -51,15 +95,27 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
 ]
 
+<<<<<<< HEAD
+=======
+SITE_ID = 5
+
+>>>>>>> 03c52099d7f198e679467080d2380535b73cc5f4
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+<<<<<<< HEAD
     "allauth.account.middleware.AccountMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+=======
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    
+    "allauth.account.middleware.AccountMiddleware",
+>>>>>>> 03c52099d7f198e679467080d2380535b73cc5f4
 ]
 
 ROOT_URLCONF = "e_shop.urls"
@@ -67,7 +123,12 @@ ROOT_URLCONF = "e_shop.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+<<<<<<< HEAD
         "DIRS": [],
+=======
+        # "DIRS": [], old
+        "DIRS": [BASE_DIR / "templates"],
+>>>>>>> 03c52099d7f198e679467080d2380535b73cc5f4
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -94,6 +155,7 @@ DATABASES = {
         "PASSWORD": "shop@123*Y",
         "HOST": "MYSQL1003.site4now.net",
         "PORT": "3306",
+<<<<<<< HEAD
         "OPTIONS": {
             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
             
@@ -101,6 +163,22 @@ DATABASES = {
         "CONN_MAX_AGE": None, 
     }
 }
+=======
+       "CONN_MAX_AGE": 0,   # disable persistent connections
+        "OPTIONS": {
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+            "charset": "utf8mb4",
+            "connect_timeout": 30,       # increase timeout
+            "read_timeout": 60,
+            "write_timeout": 60,
+            "autocommit": True,  
+        },
+      
+    }
+}  
+SITE_ID = 1
+
+>>>>>>> 03c52099d7f198e679467080d2380535b73cc5f4
 
 
 
@@ -126,7 +204,11 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",               # Default
     "allauth.account.auth_backends.AuthenticationBackend",     # Enables django-allauth
 ]
+<<<<<<< HEAD
 SITE_ID = 1
+=======
+
+>>>>>>> 03c52099d7f198e679467080d2380535b73cc5f4
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -139,6 +221,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+<<<<<<< HEAD
 # Allauth configuration
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "none"
@@ -151,14 +234,81 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 
+=======
+# Allauth settings
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'  # or 'mandatory'
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+SOCIALACCOUNT_AUTO_SIGNUP = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.getenv('GOOGLE_CLIENT_ID'),
+            'secret': os.getenv('GOOGLE_CLIENT_SECRET'),
+            'key': ''
+        },
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+    }
+}
+    # 'facebook': {
+    #     'METHOD': 'oauth2',
+    #     'SCOPE': ['email', 'public_profile'],
+    #     'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+    #     'FIELDS': [
+    #         'id', 'email', 'name', 'first_name', 'last_name',
+    #     ],
+    #     'VERIFIED_EMAIL': False,
+    # },
+
+
+
+LOGIN_URL = 'account_login'
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'
+
+LOGIN_REDIRECT_URL = "/" 
+LOGOUT_REDIRECT_URL = "/"
+>>>>>>> 03c52099d7f198e679467080d2380535b73cc5f4
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+<<<<<<< HEAD
 STATIC_URL = "static/"
+=======
+# Static files (CSS, JS, images)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'app', 'static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Media files
+>>>>>>> 03c52099d7f198e679467080d2380535b73cc5f4
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+<<<<<<< HEAD
+=======
+
+#mew
+# Email configuration for development
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    # Production email settings
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = env('EMAIL_HOST', default='smtp.gmail.com')
+    EMAIL_PORT = env.int('EMAIL_PORT', default=587)
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
+>>>>>>> 03c52099d7f198e679467080d2380535b73cc5f4
